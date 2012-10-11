@@ -63,7 +63,7 @@ lodash backbone -o build/lodash.build.js
       // by default, lodashbuilder uses always the latest version
       // of Lo-Dash (that was in npm at the time of lodashbuilders installation)
       src: 'node_modules/lodash',
-      // More information can be found in the @[Lo-Dash custom builds section](http://lodash.com/#custom-builds)
+      // More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
       category: ['collections', 'functions']
       exports: ['amd', 'commonjs', 'node']
       iife: '!function(window,undefined){%output%}(this)',
