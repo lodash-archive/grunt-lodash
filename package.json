@@ -1,0 +1,40 @@
+{
+  "name": "grunt-lodashbuilder",
+  "description": "Build your Lo-Dash experience with grunt",
+  "version": "0.1.0",
+  "homepage": "https://github.com/asciidisco/grunt-lodashbuilder",
+  "author": {
+    "name": "asciidisco",
+    "email": "public@asciidisco.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@://github.com/asciidisco/grunt-lodashbuilder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/asciidisco/grunt-lodashbuilder/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/asciidisco/grunt-lodashbuilder/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "grunt.js",
+  "bin": {
+    "grunt-lodashbuilder": "bin/grunt-lodashbuilder"
+  },
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "scripts": {
+    "test": "grunt travis --verbose"
+  },
+  "dependencies": {
+    "grunt": ">=0.3.x",
+    "lodash": "latest"
+  },
+  "keywords": [
+    "gruntplugin"
+  ]
+}
