@@ -76,6 +76,8 @@ lodash backbone -o build/lodash.build.js
 ```
 
 ## Release History
+### 0.1.1
++ Extended blacklist for config flags (needed for grunt-requirejs integration)
 ### 0.1.0
 + Initial Release
 
