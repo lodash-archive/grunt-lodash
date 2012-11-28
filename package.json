@@ -1,7 +1,7 @@
 {
   "name": "grunt-lodashbuilder",
   "description": "Build your Lo-Dash experience with grunt",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/asciidisco/grunt-lodashbuilder",
   "author": {
     "name": "asciidisco",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "grunt": ">=0.3.x",
-    "lodash": "latest"
+    "lodash": "0.9.x"
   },
   "keywords": [
     "gruntplugin"
