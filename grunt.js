@@ -1,7 +1,9 @@
 module.exports = function(grunt) {
+  'use strict';
 
   // Project configuration.
   grunt.initConfig({
+
     pkg: '<json:package.json>',
 
     test: {
