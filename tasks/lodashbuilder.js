@@ -40,7 +40,8 @@ module.exports = function (grunt) {
     builder.build({
       config: config,
       done: done,
-      debug: !!config.debug
+      debug: !!config.debug,
+      minify: !!config.minify
     }, fileWriter);
 
     return done;
