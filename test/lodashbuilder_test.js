@@ -4,7 +4,7 @@ grunt.loadTasks('tasks');
 
 exports['require'] = {
   setUp: function(done) {
-  	'use strict';
+  'use strict';
     // setup here
     done();
   }
