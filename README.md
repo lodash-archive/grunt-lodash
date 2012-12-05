@@ -20,12 +20,6 @@ Then add this line to your project's `grunt.js` gruntfile.
 grunt.loadNpmTasks('grunt-lodashbuilder');
 ```
 
-### Resources
-
-+ [grunt](https://github.com/cowboy/grunt)
-+ [getting_started](https://github.com/cowboy/grunt/blob/master/docs/getting_started.md)
-+ [Lo-Dash](http://lodash.com/)
-
 ## Documentation
 Load the grunt-lodashbuilder task as described in 'Getting started' and add your Lo-Dash builder
 configuration to your grunt file:
@@ -75,12 +69,20 @@ lodash backbone -o build/lodash.build.js
     }
 ```
 
+## Contributing
+If you like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/CONTRIBUTING.md)
+
+## Contributors
+Check the [AUTHORS File](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/AUTHORS.md) for more information
+
 ## Release History
-### 0.1.1
-+ Extended blacklist for config flags (needed for grunt-requirejs integration)
-### 0.1.0
-+ Initial Release
+Take a look at the [Changelog](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/CHANGELOG)
+
+## Resources
++ [grunt](https://github.com/cowboy/grunt)
++ [Getting started](https://github.com/cowboy/grunt/blob/master/docs/getting_started.md)
++ [Lo-Dash](http://lodash.com/)
 
 ## License
-Copyright (c) 2012 asciidisco
-Licensed under the MIT license.
+Copyright (c) 2012 Sebastian Golasch
+Licensed under the [MIT license](https://github.com/asciidisco/grunt-lodashbuilder/LICENSE-MIT).
