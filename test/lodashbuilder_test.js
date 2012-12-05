@@ -22,8 +22,8 @@ exports['require'] = {
 
     var build = builder.init(grunt).build;
     build(options, function (transport) {
-      test.equal(transport.type, 'content', 'Transport type has been set correctly')
-      test.ok(transport.content.length >= 1, 'Transport content has been generated')
+      test.equal(transport.type, 'content', 'Transport type has been set correctly');
+      test.ok(transport.content.length >= 1, 'Transport content has been generated');
       test.done();
     });
   }
