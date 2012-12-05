@@ -85,4 +85,4 @@ Take a look at the [Changelog](https://github.com/asciidisco/grunt-lodashbuilder
 
 ## License
 Copyright (c) 2012 Sebastian Golasch
-Licensed under the [MIT license](https://github.com/asciidisco/grunt-lodashbuilder/LICENSE-MIT).
+Licensed under the [MIT license](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/LICENSE-MIT).
