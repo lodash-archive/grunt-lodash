@@ -35,7 +35,7 @@
   var closureCompilerPath = nodeMinifyPath + 'lib/google_closure_compiler-r1918.jar';
 
   /** The uglifyjs path **/
-  var uglifyjsPath = nodeMinifyPath + 'node_modules/uglify-js';
+  var uglifyjsPath = require.resolve('uglify-js').replace('uglify-js.js', '');
 
   /** The path of the directory that is the base of the repository */
   var basePath = fs.realpathSync(path.join(__dirname, '..', 'node_modules', 'lodash'));
@@ -48,16 +48,12 @@
     console.log('Moving Closure Compiler to lodash/vendor');
     fs.mkdirSync(vendorPath + '/closure-compiler');
     copyFileSync(closureCompilerPath, vendorPath + '/closure-compiler/compiler.jar');
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 
   // Copy uglifyjs in the vendor folder
   try {
     console.log('Moving UglifyJS to lodash/vendor');
     wrench.copyDirSyncRecursive(uglifyjsPath, vendorPath + '/uglify-js');
-  } catch (e) {
-    console.log(e);
-  }
+  } catch (e) {}
 
 }());
