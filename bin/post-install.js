@@ -53,7 +53,7 @@
   // Copy uglifyjs in the vendor folder
   try {
     console.log('Moving UglifyJS to lodash/vendor');
-    wrench.copyDirSyncRecursive(uglifyjsPath, vendorPath + '/uglify-js');
+    wrench.copyDirSyncRecursive(uglifyjsPath, vendorPath + '/uglifyjs');
   } catch (e) {}
 
 }());
