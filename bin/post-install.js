@@ -1,20 +1,41 @@
 #!/usr/bin/env node
 
-// Post install script is totally stolen from lodash itself
-// with slight modifications to install closure compiler & uglify,
-// cause we need them for the buildprocess & lodash only installs them
-// when installed gloablly via npm. We´re going to install them anyways
+// Post install script for closure compiler & uglyfyjs
 
 ;(function() {
   'use strict';
 
   /** Load Node modules */
-  var exec = require('child_process').exec,
-      fs = require('fs'),
-      https = require('https'),
+  var fs = require('fs'),
       path = require('path'),
-      tar = require(require.resolve('lodash').replace('lodash.js', '') + 'vendor/tar/tar.js'),
-      zlib = require('zlib');
+      wrench = require('wrench');
+
+  // copy file sync helper function
+  var copyFileSync = function(srcFile, destFile) {
+    var BUF_LENGTH, buff, bytesRead, fdr, fdw, pos;
+    BUF_LENGTH = 64 * 1024;
+    buff = new Buffer(BUF_LENGTH);
+    fdr = fs.openSync(srcFile, 'r');
+    fdw = fs.openSync(destFile, 'w');
+    bytesRead = 1;
+    pos = 0;
+    while (bytesRead > 0) {
+      bytesRead = fs.readSync(fdr, buff, 0, BUF_LENGTH, pos);
+      fs.writeSync(fdw, buff, 0, bytesRead);
+      pos += bytesRead;
+    }
+    fs.closeSync(fdr);
+    return fs.closeSync(fdw);
+  };
+
+  /** The path of the node-minify library **/
+  var nodeMinifyPath = require.resolve('node-minify').replace('index.js', '');
+
+  /** The closure compiler path **/
+  var closureCompilerPath = nodeMinifyPath + 'lib/google_closure_compiler-r1918.jar';
+
+  /** The uglifyjs path **/
+  var uglifyjsPath = nodeMinifyPath + 'node_modules/uglify-js';
 
   /** The path of the directory that is the base of the repository */
   var basePath = fs.realpathSync(path.join(__dirname, '..', 'node_modules', 'lodash'));
@@ -22,119 +43,21 @@
   /** The path of the `vendor` directory */
   var vendorPath = path.join(basePath, 'vendor');
 
-  /** The Git object ID of `closure-compiler.tar.gz` */
-  var closureId = 'a2787b470c577cee2404d186c562dd9835f779f5';
-
-  /** The Git object ID of `uglifyjs.tar.gz` */
-  var uglifyId = '3390b259e04829538e4d3635d12b317dd6103eca';
-
-  /** The media type for raw blob data */
-  var mediaType = 'application/vnd.github.v3.raw';
-
-  /** Used to reference parts of the blob href */
-  var location = (function() {
-    var host = 'api.github.com',
-        origin = 'https://api.github.com',
-        pathname = '/repos/bestiejs/lodash/git/blobs';
-
-    return {
-      'host': host,
-      'href': host + origin + pathname,
-      'origin': origin,
-      'pathname': pathname
-    };
-  }());
-
-  /*--------------------------------------------------------------------------*/
-
-  /**
-   * Fetches a required `.tar.gz` dependency with the given Git object ID from
-   * the Lo-Dash repo on GitHub. The object ID may be obtained by running
-   * `git hash-object path/to/dependency.tar.gz`.
-   *
-   * @private
-   * @param {Object} options The options object.
-   *  id - The Git object ID of the `.tar.gz` file.
-   *  onComplete - The function, invoked with one argument (exception),
-   *   called once the extraction has finished.
-   *  path - The path of the extraction directory.
-   *  title - The dependency's title used in status updates logged to the console.
-   */
-  function getDependency(options) {
-    options || (options = {});
-
-    var id = options.id,
-        onComplete = options.onComplete,
-        path = options.path,
-        title = options.title;
-
-    function callback(exception) {
-      if (exception) {
-        console.error([
-          'There was a problem installing ' + title + '. To manually install, run:',
-          '',
-          "curl -H 'Accept: " + mediaType + "' " + location.href + '/' + id + " | tar xvz -C '" + path + "'"
-        ].join('\n'));
-      }
-      onComplete(exception);
-    }
-
-    console.log('Downloading ' + title + '...');
-
-    https.get({
-      'host': location.host,
-      'path': location.pathname + '/' + id,
-      'headers': {
-        // By default, all GitHub blob API endpoints return a JSON document
-        // containing Base64-encoded blob data. Overriding the `Accept` header
-        // with the GitHub raw media type returns the blob data directly.
-        // See http://developer.github.com/v3/media/.
-        'Accept': mediaType
-      }
-    }, function(response) {
-      var decompressor = zlib.createUnzip(),
-          parser = new tar.Extract({ 'path': path });
-
-      decompressor.on('error', callback)
-      parser.on('end', callback).on('error', callback);
-      response.pipe(decompressor).pipe(parser);
-    })
-    .on('error', callback);
+  // Copy closure compiler in the vendor folder
+  try {
+    console.log('Moving Closure Compiler to lodash/vendor');
+    fs.mkdirSync(vendorPath + '/closure-compiler');
+    copyFileSync(closureCompilerPath, vendorPath + '/closure-compiler/compiler.jar');
+  } catch (e) {
+    console.log(e);
   }
 
-  /*--------------------------------------------------------------------------*/
+  // Copy uglifyjs in the vendor folder
+  try {
+    console.log('Moving UglifyJS to lodash/vendor');
+    wrench.copyDirSyncRecursive(uglifyjsPath, vendorPath + '/uglify-js');
+  } catch (e) {
+    console.log(e);
+  }
 
-  exec('npm -g root', function(exception, stdout) {
-    if (exception) {
-      console.error([
-        'Oops! There was a problem detecting the install mode. If you’re installing the',
-        'Lo-Dash command-line executable (via `npm install -g lodash`), you’ll need to',
-        'manually install UglifyJS and the Closure Compiler by running:',
-        '',
-        "curl -H 'Accept: " + mediaType + "' " + location.href + '/' + closureId + " | tar xvz -C '" + vendorPath + "'",
-        "curl -H 'Accept: " + mediaType + "' " + location.href + '/' + uglifyId  + " | tar xvz -C '" + vendorPath + "'",
-        '',
-        'Please submit an issue on the GitHub issue tracker: ' + process.env.npm_package_bugs_url
-      ].join('\n'));
-
-      console.error(exception);
-    }
-    // download the Closure Compiler
-    getDependency({
-      'title': 'the Closure Compiler',
-      'id': closureId,
-      'path': vendorPath,
-      'onComplete': function() {
-        // download UglifyJS
-        getDependency({
-          'title': 'UglifyJS',
-          'id': uglifyId,
-          'path': vendorPath,
-          'onComplete': function() {
-            process.exit();
-          }
-        });
-      }
-    });
-  });
 }());
