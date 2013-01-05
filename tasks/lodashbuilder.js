@@ -18,7 +18,7 @@ module.exports = function (grunt) {
   // TASKS
   // ==========================================================================
 
-  grunt.registerTask('lodash', 'Builds your custimized lodash experience', function(mode) {
+  grunt.registerTask('lodash', 'Builds a customized Lo-Dash', function (mode) {
     var done = this.async(),
         config = grunt.config.get('lodash');
 
@@ -30,7 +30,9 @@ module.exports = function (grunt) {
 
       // proceed with file content
       if (transport.type === 'content') {
+        grunt.log.write('Writing custom Lo-Dash file...');
         grunt.file.write(options.config.dest, transport.content);
+        grunt.log.ok();
       }
 
       options.done();
