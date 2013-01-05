@@ -2,7 +2,7 @@
 
 // Post install script for closure compiler & uglyfyjs
 
-;(function() {
+;(function () {
   'use strict';
 
   /** Load Node modules */
@@ -11,7 +11,7 @@
       wrench = require('wrench');
 
   // copy file sync helper function
-  var copyFileSync = function(srcFile, destFile) {
+  var copyFileSync = function (srcFile, destFile) {
     var BUF_LENGTH, buff, bytesRead, fdr, fdw, pos;
     BUF_LENGTH = 64 * 1024;
     buff = new Buffer(BUF_LENGTH);
