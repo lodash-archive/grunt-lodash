@@ -5,12 +5,12 @@ var builder = require('../lib/builder');
 grunt.loadTasks('tasks');
 
 exports['require'] = {
-  setUp: function(done) {
+  setUp: function (done) {
   'use strict';
     // setup here
     done();
   },
-  testSimpleLodashCustomBuilderOutput: function(test) {
+  testSimpleLodashCustomBuilderOutput: function (test) {
     'use strict';
     test.expect(2) ;
     var options = {

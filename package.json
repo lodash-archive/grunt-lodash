@@ -28,7 +28,10 @@
     "test": "grunt travis --verbose"
   },
   "dependencies": {
-    "grunt": ">=0.3.x",
+    "grunt": ">=0.4.x",
+    "grunt-contrib-jshint": "0.1.x",
+    "grunt-contrib-nodeunit": "0.1.x",
+    "grunt-contrib-watch": "0.2.x",
     "lodash": "latest",
     "semver": "1.1.x",
     "temp": "0.4.x",
