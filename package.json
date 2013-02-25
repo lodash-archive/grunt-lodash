@@ -25,7 +25,7 @@
     "node": ">=0.8.0"
   },
   "scripts": {
-    "postuninstall": "node ./bin/post-install.js",
+    "postinstall": "node ./bin/post-install.js",
     "test": "grunt travis --verbose"
   },
   "dependencies": {
