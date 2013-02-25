@@ -1,7 +1,7 @@
 {
   "name": "grunt-lodashbuilder",
   "description": "Build your Lo-Dash experience with grunt",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "homepage": "https://github.com/asciidisco/grunt-lodashbuilder",
   "author": {
     "name": "asciidisco",
@@ -25,6 +25,7 @@
     "node": ">=0.8.0"
   },
   "scripts": {
+    "postuninstall": "node ./bin/post-install.js",
     "test": "grunt travis --verbose"
   },
   "dependencies": {
