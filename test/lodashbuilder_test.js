@@ -1,31 +1,18 @@
 var grunt = require('grunt');
-var builder = require('../lib/builder');
 
-// Load local tasks.
-grunt.loadTasks('tasks');
-
-exports['require'] = {
-  setUp: function (done) {
-  'use strict';
-    // setup here
-    done();
-  },
-  testSimpleLodashCustomBuilderOutput: function (test) {
+exports.nodeunit = {
+  lodash_dep: function(test){
     'use strict';
-    test.expect(2) ;
-    var options = {
-      config: {
-        include: ['each'],
-        debug: true
-      }
-    };
 
-    var build = builder.init(grunt).build;
-    build(options, function (transport) {
-      test.equal(transport.type, 'content', 'Transport type has been set correctly');
-      test.ok(transport.content.length >= 1, 'Transport content has been generated');
-      test.done();
-    });
+    test.expect(2);
+
+    var actual = grunt.file.read('tmp/dep/lodash.js');
+    var expected = grunt.file.read('test/fixtures/dep/lodash.js');
+    test.equals(actual, expected, 'should generate a lodash using the dependency');
+
+    var exists = grunt.file.exists('tmp/dep/lodash.min.js');
+    test.ok(exists, 'should minify lodash as lodash.min');
+
+    test.done();
   }
-
 };

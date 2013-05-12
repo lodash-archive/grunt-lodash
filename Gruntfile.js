@@ -7,7 +7,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     nodeunit: {
-      test: ['test/**/*.js']
+      test: ['test/**/*_test.js']
     },
 
     watch: {
@@ -21,8 +21,8 @@ module.exports = function (grunt) {
     },
 
     lodash: {
-      custom: {
-        dest: 'build/lodash.custom.js'
+      test: {
+        dest: 'tmp/dep/lodash.js'
       },
       options: {
         modifier: 'backbone',
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
       options: {
         jshintrc: '.jshintrc'
       },
-      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
+      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js', '!test/fixtures/**/*.js']
     }
   });
 
@@ -53,6 +53,6 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
-  grunt.registerTask('default', ['jshint:files', 'nodeunit:test']);
+  grunt.registerTask('default', ['jshint:files', 'lodash:test', 'nodeunit:test']);
   grunt.registerTask('travis', 'default');
 };
