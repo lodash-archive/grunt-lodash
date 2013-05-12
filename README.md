@@ -1,4 +1,4 @@
-# grunt-lodashbuilder
+# grunt-lodash
 
 Simple grunt wrapper around the Lo-Dash builder.
 
@@ -7,21 +7,21 @@ Simple grunt wrapper around the Lo-Dash builder.
 
 This project is not associated with the people behind Lo-Dash (or Lo-Dash itself) in any way.
 
-lodashbuilder only works with Lo-Dash version >= 0.7.0!
+lodash only works with Lo-Dash version >= 0.7.0!
 
-[![Build Status](https://secure.travis-ci.org/asciidisco/grunt-lodashbuilder.png?branch=master)](http://travis-ci.org/asciidisco/grunt-lodashbuilder)
+[![Build Status](https://secure.travis-ci.org/lodash/grunt-lodash.png?branch=master)](http://travis-ci.org/lodash/grunt-lodash)
 
 ## Getting Started
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-lodashbuilder`
+Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-lodash`
 
 Then add this line to your project's `grunt.js` gruntfile.
 
 ```javascript
-grunt.loadNpmTasks('grunt-lodashbuilder');
+grunt.loadNpmTasks('grunt-lodash');
 ```
 
 ## Documentation
-Load the grunt-lodashbuilder task as described in 'Getting started' and add your Lo-Dash builder
+Load the grunt-lodash task as described in 'Getting started' and add your Lo-Dash builder
 configuration to your grunt file:
 
 Example Lo-Dash optimizer grunt file config entry:
@@ -54,8 +54,8 @@ lodash backbone -o build/lodash.build.js
       dest: 'build/lodash.build.js',
       // define a different Lo-Dash location
       // useful if you wanna use a different Lo-Dash version (>= 0.7.0)
-      // by default, lodashbuilder uses always the latest version
-      // of Lo-Dash (that was in npm at the time of lodashbuilders installation)
+      // by default, grunt-lodash uses always the latest version
+      // of Lo-Dash (that was in npm at the time of grunt-lodash installation)
       src: 'node_modules/lodash',
       // More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
       category: ['collections', 'functions']
@@ -70,13 +70,13 @@ lodash backbone -o build/lodash.build.js
 ```
 
 ## Contributing
-If you like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/CONTRIBUTING.md)
+If you like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md)
 
 ## Contributors
-Check the [AUTHORS File](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/AUTHORS.md) for more information
+Check the [AUTHORS File](https://github.com/lodash/grunt-lodash/blob/master/AUTHORS.md) for more information
 
 ## Release History
-Take a look at the [Changelog](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/CHANGELOG)
+Take a look at the [Changelog](https://github.com/lodash/grunt-lodash/blob/master/CHANGELOG)
 
 ## Resources
 + [grunt](https://github.com/cowboy/grunt)
@@ -85,4 +85,4 @@ Take a look at the [Changelog](https://github.com/asciidisco/grunt-lodashbuilder
 
 ## License
 Copyright (c) 2012 Sebastian Golasch
-Licensed under the [MIT license](https://github.com/asciidisco/grunt-lodashbuilder/blob/master/LICENSE-MIT).
+Licensed under the [MIT license](https://github.com/lodash/grunt-lodash/blob/master/LICENSE-MIT).

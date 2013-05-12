@@ -1,6 +1,6 @@
 /*
- * grunt-lodashbuilder
- * https://github.com/asciidisco/grunt-lodashbuilder
+ * grunt-lodash
+ * https://github.com/lodash/grunt-lodash
  *
  * Copyright (c) 2012 asciidisco
  * Licensed under the MIT license.

@@ -1,4 +1,4 @@
-# Contributing to grunt-lodashbuilder
+# Contributing to grunt-lodash
 
 ## Filing issues
 If something isn't working like you think it should, please read the documentation first.
@@ -11,12 +11,12 @@ Try to [reduce your code](http://www.webkit.org/quality/reduction.html) to the b
 ### Explain the issue
 If we can't reproduce the issue, we can't fix it. Please list the exact steps required to reproduce the issue. Include versions of your OS, Node.js, grunt, etc. Include relevant logs or sample code.
 
-## Modifying grunt-lodashbuilder
+## Modifying grunt-lodash
 First, ensure that you have the latest [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/) installed.
 
 1. Fork and clone the repo.
 2. Check out the correct branch. Currently, the development happens in the `devel` branch.
-3. Run `npm install` to install all grunt-lodashbuilder dependencies.
+3. Run `npm install` to install all grunt-lodash dependencies.
 4. Run `grunt travis` to test & lint the plugin.
 
 Assuming that you don't see any red, you're ready to go. Just be sure to run `grunt` after making any changes, to ensure that nothing breaks.
