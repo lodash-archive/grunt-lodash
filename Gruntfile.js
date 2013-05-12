@@ -20,25 +20,34 @@ module.exports = function (grunt) {
       }
     },
 
+    lodash: {
+      custom: {
+        dest: 'build/lodash.custom.js'
+      },
+      options: {
+        modifier: 'backbone',
+        category: ['collections', 'functions'],
+        exports: ['amd', 'commonjs', 'node'],
+        iife: '!function(window,undefined){%output%}(this)',
+        include: ['each', 'filter', 'map'],
+        minus: ['result', 'shuffle'],
+        plus: ['random', 'template'],
+        // template: './*.jst',
+        settings: '{interpolate:/\\{\\{([\\s\\S]+?)\\}\\}/g}',
+        // flags: ['--source-map'],
+        shortFlags: []
+      }
+    },
+
     jshint: {
       options: {
-        curly: true,
-        eqeqeq: true,
-        immed: true,
-        latedef: true,
-        newcap: true,
-        noarg: true,
-        sub: true,
-        undef: true,
-        boss: true,
-        eqnull: true,
-        node: true,
-        es5: true
+        jshintrc: '.jshintrc'
       },
-      globals: {},
-      files: ['grunt.js', 'tasks/**/*.js', 'test/**/*.js']
+      files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
     }
   });
+
+  grunt.loadTasks('tasks');
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
