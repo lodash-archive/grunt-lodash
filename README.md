@@ -27,16 +27,17 @@ configuration to your grunt file:
 Example Lo-Dash optimizer grunt file config entry:
 
 ```javascript
-// ... grunt file contents
-    lodash: {
+lodash: {
+  build: {
+    // output location
+    dest: 'build/lodash.build.js',
+    options: {
       // modifiers for prepared builds
       // backbone, csp, legacy, mobile, strict, underscore
-      modifier: 'backbone',
-      // output location
-      dest: 'build/lodash.build.js'
-    },
-
-// ... even more grunt file contents
+      modifier: 'backbone'
+    }
+  }
+}
 ```
 As you might have guessed, this would produce the same output as
 
@@ -46,27 +47,31 @@ lodash backbone -o build/lodash.build.js
 
 ## All configuration options
 ```javascript
-    lodash: {
-      // modifiers for prepared builds
-      // backbone, csp, legacy, mobile, strict, underscore
-      modifier: 'backbone',
-      // output location
-      dest: 'build/lodash.build.js',
-      // define a different Lo-Dash location
-      // useful if you wanna use a different Lo-Dash version (>= 0.7.0)
-      // by default, grunt-lodash uses always the latest version
-      // of Lo-Dash (that was in npm at the time of grunt-lodash installation)
-      src: 'node_modules/lodash',
-      // More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
-      category: ['collections', 'functions']
-      exports: ['amd', 'commonjs', 'node']
-      iife: '!function(window,undefined){%output%}(this)',
-      include: ['each', 'filter', 'map']
-      minus: ['result', 'shuffle']
-      plus: ['random', 'template']
-      template: './*.jst'
-      settings: '{interpolate:/\\{\\{([\\s\\S]+?)\\}\\}/g}'
-    }
+lodash: {
+  target: {
+    // output location
+    dest: 'build/lodash.build.js'
+  },
+  options: {
+    // modifiers for prepared builds
+    // backbone, csp, legacy, mobile, strict, underscore
+    modifier: 'backbone',
+    // define a different Lo-Dash location
+    // useful if you wanna use a different Lo-Dash version (>= 0.7.0)
+    // by default, grunt-lodash uses always the latest version
+    // of Lo-Dash (that was in npm at the time of grunt-lodash installation)
+    src: 'node_modules/lodash',
+    // More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
+    category: ['collections', 'functions']
+    exports: ['amd', 'commonjs', 'node']
+    iife: '!function(window,undefined){%output%}(this)',
+    include: ['each', 'filter', 'map']
+    minus: ['result', 'shuffle']
+    plus: ['random', 'template']
+    template: './*.jst'
+    settings: '{interpolate:/\\{\\{([\\s\\S]+?)\\}\\}/g}'
+  }
+}
 ```
 
 ## Contributing
@@ -79,8 +84,8 @@ Check the [AUTHORS File](https://github.com/lodash/grunt-lodash/blob/master/AUTH
 Take a look at the [Changelog](https://github.com/lodash/grunt-lodash/blob/master/CHANGELOG)
 
 ## Resources
-+ [grunt](https://github.com/cowboy/grunt)
-+ [Getting started](https://github.com/cowboy/grunt/blob/master/docs/getting_started.md)
++ [grunt](https://github.com/gruntjs/grunt)
++ [Getting started](http://gruntjs.com/getting-started)
 + [Lo-Dash](http://lodash.com/)
 
 ## License
