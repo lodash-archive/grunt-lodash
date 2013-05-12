@@ -1,46 +1,33 @@
 # Contributing to grunt-lodash
 
-## Filing issues
-If something isn't working like you think it should, please read the documentation first.
+If you’d like to contribute a feature or bug fix, you can [fork](https://help.github.com/articles/fork-a-repo) grunt-lodash, commit your changes, and [send a pull request](https://help.github.com/articles/using-pull-requests).
+Please make sure to [search the issue tracker](https://github.com/lodash/grunt-lodash/issues) first; your issue may have already been discussed or fixed in `master`.
 
-The best way to ensure an issue gets addressed is to file it in the appropriate issues tracker.
+## Tests
 
-### Simplify the issue
-Try to [reduce your code](http://www.webkit.org/quality/reduction.html) to the bare minimum required to reproduce the issue. This makes it much easier (and much faster) to isolate and fix the issue.
+Include updated unit tests in the `test` directory as part of your pull request.
+You can run the tests from the command line via `npm test`.
 
-### Explain the issue
-If we can't reproduce the issue, we can't fix it. Please list the exact steps required to reproduce the issue. Include versions of your OS, Node.js, grunt, etc. Include relevant logs or sample code.
+## Contributor License Agreement
 
-## Modifying grunt-lodash
-First, ensure that you have the latest [Node.js](http://nodejs.org/) and [npm](http://npmjs.org/) installed.
+grunt-lodash is a member of the [Dojo Foundation](http://dojofoundation.org/).
+As such, we request that all contributors sign the Dojo Foundation [contributor license agreement](http://dojofoundation.org/about/claForm).
 
-1. Fork and clone the repo.
-2. Check out the correct branch. Currently, the development happens in the `devel` branch.
-3. Run `npm install` to install all grunt-lodash dependencies.
-4. Run `grunt travis` to test & lint the plugin.
+For more information about CLAs, please check out Alex Russell’s excellent post, ["Why Do I Need to Sign This?"](http://infrequently.org/2008/06/why-do-i-need-to-sign-this/).
 
-Assuming that you don't see any red, you're ready to go. Just be sure to run `grunt` after making any changes, to ensure that nothing breaks.
+## Coding Guidelines
 
-### Submitting pull requests
+In addition to the following guidelines, please follow the conventions already established in the code.
 
-1. Create a new branch, please don't work in your `master` or `devel` branch directly.
-2. Add failing tests for the change you want to make. Run `grunt` to see the tests fail.
-3. Fix stuff.
-4. Run `grunt` to see if the tests pass. Repeat steps 2-4 until done.
-5. Update the documentation to reflect any changes.
-6. Push to your fork and submit a pull request.
+- **Spacing**:<br>
+  Use two spaces for indentation. No tabs.
 
-### Adding tests
-Tests are written in NodeUnit style.
-NodeUnit tests can be run using the ´grunt test´ command.
+- **Naming**:<br>
+  Keep variable and method names concise and descriptive.<br>
+  Variable names `index`, `collection`, and `callback` are preferable to `i`, `arr`, and `fn`.
 
-### Syntax
+- **Quotes**:<br>
+  Single-quoted strings are preferred to double-quoted strings; however, please use a double-quoted string if the value contains a single-quote character to avoid unnecessary escaping.
 
-* Two space indents. Don't use tabs anywhere. Use `\t` if you need a tab character in a string.
-* No trailing whitespace, except in markdown files where a linebreak must be forced.
-* Don't go overboard with the whitespace.
-* No more than [one assignment](http://benalman.com/news/2012/05/multiple-var-statements-javascript/) per `var` statement.
-* Delimit strings with single-quotes `'`, not double-quotes `"`.
-* Prefer `if` and `else` to ["clever"](http://programmers.stackexchange.com/a/25281) uses of `? :` conditional or `||`, `&&` logical operators.
-* Comments are great. Just put them _before_ the line of code, _not_ at the _end_ of the line.
-* **When in doubt, follow the conventions you see used in the source already.**
+- **Comments**:<br>
+  Please use single-line comments to annotate significant additions, and [JSDoc-style](http://www.2ality.com/2011/08/jsdoc-intro.html) comments for new methods.
