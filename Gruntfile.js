@@ -95,7 +95,27 @@ module.exports = function (grunt) {
           shortFlags: ['m', 's']
         }
       },
-      // TODO: CSP modifier test
+      csp_modifier: {
+        dest: 'tmp/csp_modifier/lodash.js',
+        options: {
+          modifier: 'csp',
+          shortFlags: ['d', 's']
+        }
+      },
+      mobile_modifier: {
+        dest: 'tmp/mobile_modifier/lodash.js',
+        options: {
+          modifier: 'mobile',
+          shortFlags: ['s']
+        }
+      },
+      modern_modifier: {
+        dest: 'tmp/modern_modifier/lodash.js',
+        options: {
+          modifier: 'modern',
+          shortFlags: ['d', 's']
+        }
+      },
       test: {
         dest: 'tmp/dep/lodash.js',
         options: {

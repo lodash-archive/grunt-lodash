@@ -197,6 +197,84 @@ exports.nodeunit = {
 
     test.done();
   },
+  csp_modifier: function(test){
+    test.expect(4);
+
+    var cspFilepath = grunt.config.get('lodash.csp_modifier.dest');
+    var modernFilepath = grunt.config.get('lodash.modern_modifier.dest');
+
+    var cspExists = grunt.file.exists(cspFilepath);
+    var modernExists = grunt.file.exists(modernFilepath);
+    test.ok(cspExists, 'should produce a CSP build');
+    test.ok(modernExists, 'should produce a modern build');
+
+    // remove copyright header and append to `sources`
+    var cspSource = grunt.file.read(cspFilepath).replace(/^\/\**[\s\S]+?\*\/\n/, '');
+    var modernSource = grunt.file.read(modernFilepath).replace(/^\/\**[\s\S]+?\*\/\n/, '');
+
+    var noFunction = _.every([cspSource, modernSource], function(source) {
+      // remove `Function` in `_.template` before testing for additional use
+      return !/\bFunction\(/.test(source.replace(/\= *\w+\(\w+, *['"]return.+?apply[^)]+\)/, ''));
+    });
+    test.ok(noFunction, 'should not contain function other than in _.template');
+
+    test.equal(cspSource, modernSource, 'should be the same build');
+
+    test.done();
+  },
+  mobile_modifier: function(test){
+    /* jshint eqeqeq: false */
+    test.expect(5);
+
+    var array = [1, 2, 3];
+    var context = createContext();
+    var object1 = [{ 'a': 1 }];
+    var object2 = [{ 'b': 2 }];
+    var object3 = [{ 'a': 1, 'b': 2 }];
+    var circular1 = { 'a': 1 };
+    var circular2 = { 'a': 1 };
+
+    circular1.b = circular1;
+    circular2.b = circular2;
+
+    var filepath = grunt.config.get('lodash.mobile_modifier.dest');
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a mobile build');
+
+    var source = grunt.file.read(filepath);
+
+    vm.runInContext(source, context);
+    var lodash = context._;
+
+    test.deepEqual(lodash.merge(object1, object2), object3, 'should combine the 2 objects');
+    test.deepEqual(lodash.sortBy([3, 2, 1], _.identity), array, 'should sort the array');
+    test.strictEqual(lodash.isEqual(circular1, circular2), true, 'should treat circular args as equal');
+
+    var actual = lodash.cloneDeep(circular1);
+    test.ok(actual != circular1 && actual.b == actual, 'should clone circular objects deep');
+
+    test.done();
+  },
+  modern_modifier: function(test){
+    test.expect(2);
+
+    var context = createContext();
+
+    var filepath = grunt.config.get('lodash.modern_modifier.dest');
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a modern build');
+
+    var source = grunt.file.read(filepath);
+
+    vm.runInContext(source, context);
+    var lodash = context._;
+
+    test.strictEqual(lodash.isPlainObject(Object.create(null)), true, 'should treat Object.create(null) as a plain object');
+
+    test.done();
+  },
   lodash_dep: function(test){
 
     test.expect(2);
