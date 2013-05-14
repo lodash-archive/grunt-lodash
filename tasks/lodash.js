@@ -13,6 +13,14 @@ module.exports = function (grunt) {
   var bin = pkg.bin.lodash;
   var builder = require.resolve('lodash/' + bin);
 
+  var _ = require('lodash');
+
+  var customOptions = ['modifier', 'flags', 'shortFlags'];
+
+  var omitCustom = _.partialRight(_.omit, function(value, key){
+    return _.contains(customOptions, key);
+  });
+
   // ==========================================================================
   // TASKS
   // ==========================================================================
@@ -25,8 +33,7 @@ module.exports = function (grunt) {
       shortFlags: []
     });
 
-    var _ = grunt.util._;
-    var args = _.map(_.omit(opts, 'modifier', 'flags', 'shortFlags'), function(val, opt){
+    var args = _.map(omitCustom(opts), function(val, opt){
       if(Array.isArray(val)){
         val = val.join(',');
       }
@@ -49,9 +56,18 @@ module.exports = function (grunt) {
 
     var output = ['--output', this.files[0].dest];
 
+    var command = [builder];
+    if(opts.modifier){
+      command.push(opts.modifier);
+    }
+
+    var spawnArgs = command.concat(args).concat(output).concat(flags).concat(shortFlags);
+
+    grunt.verbose.writeln('Build Arguments: ' + spawnArgs.join(' '));
+
     grunt.util.spawn({
       cmd: 'node',
-      args: [builder, opts.modifier].concat(args).concat(output).concat(flags).concat(shortFlags)
+      args: spawnArgs
     }, function(err, data){
       if(err){
         grunt.log.error(err.toString());
