@@ -1,3 +1,13 @@
+var _ = require('lodash');
+
+/** List of all Lo-Dash methods */
+var lodashMethods = _.functions(_).filter(function(methodName) {
+  return !/^_/.test(methodName);
+});
+
+/** List of all methods */
+var allMethods = lodashMethods.concat('findWhere');
+
 // Project configuration.
 var config = module.exports = {
 
@@ -31,6 +41,12 @@ var config = module.exports = {
     'node',
     'none'
   ],
+
+  iifes: [
+    '!function(window,undefined){%output%}(this)'
+  ],
+
+  allMethods: allMethods,
 
   clean: {
     test: ['tmp/']
@@ -85,6 +101,46 @@ config.exports.forEach(function(exp){
     dest: 'tmp/' + exp + '/lodash.js',
     options: {
       exports: exp,
+      shortFlags: ['d']
+    }
+  };
+});
+
+config.iifes.forEach(function(iife, idx){
+  var testName = 'iife' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      iife: iife,
+      shortFlags: ['d']
+    }
+  };
+});
+
+config.allMethods.forEach(function(method, idx){
+  var include = 'inc_' + idx;
+  config.lodash[include] = {
+    dest: 'tmp/' + include + '/lodash.js',
+    options: {
+      include: method,
+      shortFlags: ['d']
+    }
+  };
+
+  var plus = 'plu_' + idx;
+  config.lodash[plus] = {
+    dest: 'tmp/' + plus + '/lodash.js',
+    options: {
+      plus: method,
+      shortFlags: ['d']
+    }
+  };
+
+  var minus = 'min_' + idx;
+  config.lodash[minus] = {
+    dest: 'tmp/' + minus + '/lodash.js',
+    options: {
+      minus: method,
       shortFlags: ['d']
     }
   };

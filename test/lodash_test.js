@@ -75,3 +75,71 @@ config.exports.forEach(function(exp){
     test.done();
   };
 });
+
+config.iifes.forEach(function(iife, idx){
+  var testName = 'iife' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash iife="' + iife + '"') > -1, 'should be built with the custom iife');
+
+    test.done();
+  };
+});
+
+config.allMethods.forEach(function(method, idx){
+  var include = 'inc_' + idx;
+  nodeunit[include] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(include);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash include="' + method + '"') > -1, 'should be built with the method included');
+
+    test.done();
+  };
+
+  var plus = 'plu_' + idx;
+  nodeunit[plus] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(plus);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash plus="' + method + '"') > -1, 'should be built with the method included');
+
+    test.done();
+  };
+
+  var minus = 'min_' + idx;
+  nodeunit[minus] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(minus);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash minus="' + method + '"') > -1, 'should be built with the method included');
+
+    test.done();
+  };
+});
