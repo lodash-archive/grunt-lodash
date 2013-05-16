@@ -52,6 +52,10 @@ var config = module.exports = {
     '{interpolate:/\{\{([\s\S]+?)\}\}/g}'
   ],
 
+  moduleIds: [
+    'underscore'
+  ],
+
   clean: {
     test: ['tmp/']
   },
@@ -156,6 +160,17 @@ config.settings.forEach(function(setting, idx){
     dest: 'tmp/' + testName + '/lodash.js',
     options: {
       settings: setting,
+      shortFlags: ['d']
+    }
+  };
+});
+
+config.moduleIds.forEach(function(moduleId, idx){
+  var testName = 'moduleId' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      moduleId: moduleId,
       shortFlags: ['d']
     }
   };

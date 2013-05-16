@@ -161,3 +161,21 @@ config.settings.forEach(function(setting, idx){
     test.done();
   };
 });
+
+config.moduleIds.forEach(function(moduleId, idx){
+  var testName = 'moduleId' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash moduleId="' + moduleId + '"') > -1, 'should be built with the custom moduleId');
+
+    test.done();
+  };
+});
