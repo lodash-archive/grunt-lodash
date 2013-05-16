@@ -73,7 +73,7 @@ module.exports = function (grunt) {
         grunt.log.error(err.toString());
         done(err);
       }
-      grunt.log.write(data.toString());
+      grunt.verbose.write(data.toString());
       done();
     });
   });
