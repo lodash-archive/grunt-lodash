@@ -143,3 +143,21 @@ config.allMethods.forEach(function(method, idx){
     test.done();
   };
 });
+
+config.settings.forEach(function(setting, idx){
+  var testName = 'settings' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash settings="' + setting + '"') > -1, 'should be built with the custom settings');
+
+    test.done();
+  };
+});
