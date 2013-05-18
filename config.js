@@ -56,6 +56,46 @@ var config = module.exports = {
     'underscore'
   ],
 
+  stdoutFlags: [
+    '--stdout',
+    'stdout'
+  ],
+
+  stdoutShortFlags: [
+    '-c',
+    'c'
+  ],
+
+  debugFlags: [
+    '--debug',
+    'debug'
+  ],
+
+  debugShortFlags: [
+    '-d',
+    'd'
+  ],
+
+  minifyFlags: [
+    '--minify',
+    'minify'
+  ],
+
+  minifyShortFlags: [
+    '-m',
+    'm'
+  ],
+
+  sourceMapFlags: [
+    '--source-map',
+    'source-map'
+  ],
+
+  sourceMapShortFlags: [
+    '-p',
+    'p'
+  ],
+
   clean: {
     test: ['tmp/']
   },
@@ -172,6 +212,87 @@ config.moduleIds.forEach(function(moduleId, idx){
     options: {
       moduleId: moduleId,
       shortFlags: ['d']
+    }
+  };
+});
+
+config.stdoutFlags.forEach(function(flag, idx){
+  var testName = 'stdoutFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      flags: [flag]
+    }
+  };
+});
+
+config.stdoutShortFlags.forEach(function(flag, idx){
+  var testName = 'stdoutShortFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      shortFlags: [flag]
+    }
+  };
+});
+
+config.debugFlags.forEach(function(flag, idx){
+  var testName = 'debugFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      flags: [flag]
+    }
+  };
+});
+
+config.debugShortFlags.forEach(function(flag, idx){
+  var testName = 'debugShortFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      shortFlags: [flag]
+    }
+  };
+});
+
+config.minifyFlags.forEach(function(flag, idx){
+  var testName = 'minifyFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      flags: [flag]
+    }
+  };
+});
+
+config.minifyShortFlags.forEach(function(flag, idx){
+  var testName = 'minifyShortFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      shortFlags: [flag]
+    }
+  };
+});
+
+
+config.sourceMapFlags.forEach(function(flag, idx){
+  var testName = 'sourceMapFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      flags: [flag]
+    }
+  };
+});
+
+config.sourceMapShortFlags.forEach(function(flag, idx){
+  var testName = 'sourceMapShortFlag' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/lodash.js',
+    options: {
+      shortFlags: [flag]
     }
   };
 });

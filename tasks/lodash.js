@@ -54,14 +54,13 @@ module.exports = function (grunt) {
       return '-' + flag;
     });
 
-    var output = ['--output', this.files[0].dest];
-
     var command = [builder];
     if(opts.modifier){
       command.push(opts.modifier);
     }
 
-    var spawnArgs = command.concat(args).concat(output).concat(flags).concat(shortFlags);
+    var output = ['--output', this.files[0].dest];
+    var spawnArgs = command.concat(args).concat(flags).concat(shortFlags).concat(output);
 
     grunt.verbose.writeln('Build Arguments: ' + spawnArgs.join(' '));
 

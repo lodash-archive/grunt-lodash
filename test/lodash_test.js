@@ -179,3 +179,150 @@ config.moduleIds.forEach(function(moduleId, idx){
     test.done();
   };
 });
+
+// TODO: bug in lodash build causes files to be created
+// config.stdoutFlags.forEach(function(flag, idx){
+//   var testName = 'stdoutFlag' + idx;
+//   nodeunit[testName] = function(test){
+//     test.expect(1);
+
+//     var filepath = tmpPath(testName);
+
+//     var notExists = !grunt.file.exists(filepath);
+//     test.ok(notExists, 'should not produce a custom build on the filesystem');
+
+//     test.done();
+//   };
+// });
+
+// config.stdoutShortFlags.forEach(function(flag, idx){
+//   var testName = 'stdoutShortFlag' + idx;
+//   nodeunit[testName] = function(test){
+//     test.expect(1);
+
+//     var filepath = tmpPath(testName);
+
+//     var notExists = !grunt.file.exists(filepath);
+//     test.ok(notExists, 'should not produce a custom build on the filesystem');
+
+//     test.done();
+//   };
+// });
+
+config.debugFlags.forEach(function(flag, idx){
+  var testName = 'debugFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash --debug') > -1, 'should be built with the debug flag');
+
+    test.done();
+  };
+});
+
+config.debugShortFlags.forEach(function(flag, idx){
+  var testName = 'debugShortFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash -d') > -1, 'should be built with the debug flag');
+
+    test.done();
+  };
+});
+
+config.minifyFlags.forEach(function(flag, idx){
+  var testName = 'minifyFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash --minify') > -1, 'should be built with the minify flag');
+
+    test.done();
+  };
+});
+
+config.minifyShortFlags.forEach(function(flag, idx){
+  var testName = 'minifyShortFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash -m') > -1, 'should be built with the minify flag');
+
+    test.done();
+  };
+});
+
+config.sourceMapFlags.forEach(function(flag, idx){
+  var testName = 'sourceMapFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(3);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash --source-map') > -1, 'should be built with the source-map flag');
+
+    filepath = filepath.replace('.js', '.min.map');
+
+    exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a source-map file');
+
+    test.done();
+  };
+});
+
+config.sourceMapShortFlags.forEach(function(flag, idx){
+  var testName = 'sourceMapShortFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(3);
+
+    var filepath = tmpPath(testName);
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a custom build');
+
+    var source = grunt.file.read(filepath);
+
+    test.ok(source.indexOf('lodash -p') > -1, 'should be built with the source-map flag');
+
+    filepath = filepath.replace('.js', '.min.map');
+
+    exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a source-map file');
+
+    test.done();
+  };
+});
