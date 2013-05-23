@@ -46,6 +46,11 @@ var config = module.exports = {
     '!function(window,undefined){%output%}(this)'
   ],
 
+  templates: [
+    './test/fixtures/template/*.jst',
+    './test/fixtures/template/*.tpl'
+  ],
+
   allMethods: allMethods,
 
   settings: [
@@ -160,6 +165,17 @@ config.iifes.forEach(function(iife, idx){
     dest: 'tmp/' + testName + '/lodash.js',
     options: {
       iife: iife,
+      shortFlags: ['d']
+    }
+  };
+});
+
+config.templates.forEach(function(template, idx){
+  var testName = 'template' + idx;
+  config.lodash[testName] = {
+    dest: 'tmp/' + testName + '/templates.js',
+    options: {
+      template: template,
       shortFlags: ['d']
     }
   };

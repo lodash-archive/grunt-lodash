@@ -4,6 +4,8 @@ var grunt = require('grunt');
 
 var path = require('path');
 
+var _ = require('lodash');
+
 var config = require('../config');
 
 function tmpPath(subdir){
@@ -89,6 +91,26 @@ config.iifes.forEach(function(iife, idx){
     var source = grunt.file.read(filepath);
 
     test.ok(source.indexOf('lodash iife="' + iife + '"') > -1, 'should be built with the custom iife');
+
+    test.done();
+  };
+});
+
+config.templates.forEach(function(template, idx){
+  var testName = 'template' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(2);
+
+    // var filepath = tmpPath(testName);
+    var filepath = 'tmp/' + testName + '/templates.js';
+
+    var exists = grunt.file.exists(filepath);
+    test.ok(exists, 'should produce a built template JS file');
+
+    var templates = require('../' + filepath);
+    var keys = Object.keys(_.omit(templates, 'templates'));
+
+    test.ok(keys.length > 0, 'should attach template names to the templates object');
 
     test.done();
   };
