@@ -182,7 +182,7 @@ config.templates.forEach(function(template, idx){
 });
 
 config.allMethods.forEach(function(method, idx){
-  var include = 'inc_' + idx;
+  var include = 'include_' + idx;
   config.lodash[include] = {
     dest: 'tmp/' + include + '/lodash.js',
     options: {
@@ -191,7 +191,7 @@ config.allMethods.forEach(function(method, idx){
     }
   };
 
-  var plus = 'plu_' + idx;
+  var plus = 'plus_' + idx;
   config.lodash[plus] = {
     dest: 'tmp/' + plus + '/lodash.js',
     options: {
@@ -200,7 +200,7 @@ config.allMethods.forEach(function(method, idx){
     }
   };
 
-  var minus = 'min_' + idx;
+  var minus = 'minus_' + idx;
   config.lodash[minus] = {
     dest: 'tmp/' + minus + '/lodash.js',
     options: {

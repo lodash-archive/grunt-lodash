@@ -117,7 +117,7 @@ config.templates.forEach(function(template, idx){
 });
 
 config.allMethods.forEach(function(method, idx){
-  var include = 'inc_' + idx;
+  var include = 'include_' + idx;
   nodeunit[include] = function(test){
     test.expect(2);
 
@@ -133,7 +133,7 @@ config.allMethods.forEach(function(method, idx){
     test.done();
   };
 
-  var plus = 'plu_' + idx;
+  var plus = 'plus_' + idx;
   nodeunit[plus] = function(test){
     test.expect(2);
 
@@ -149,7 +149,7 @@ config.allMethods.forEach(function(method, idx){
     test.done();
   };
 
-  var minus = 'min_' + idx;
+  var minus = 'minus_' + idx;
   nodeunit[minus] = function(test){
     test.expect(2);
 
@@ -202,34 +202,33 @@ config.moduleIds.forEach(function(moduleId, idx){
   };
 });
 
-// TODO: bug in lodash build causes files to be created
-// config.stdoutFlags.forEach(function(flag, idx){
-//   var testName = 'stdoutFlag' + idx;
-//   nodeunit[testName] = function(test){
-//     test.expect(1);
+config.stdoutFlags.forEach(function(flag, idx){
+  var testName = 'stdoutFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(1);
 
-//     var filepath = tmpPath(testName);
+    var filepath = tmpPath(testName);
 
-//     var notExists = !grunt.file.exists(filepath);
-//     test.ok(notExists, 'should not produce a custom build on the filesystem');
+    var notExists = !grunt.file.exists(filepath);
+    test.ok(notExists, 'should not produce a custom build on the filesystem');
 
-//     test.done();
-//   };
-// });
+    test.done();
+  };
+});
 
-// config.stdoutShortFlags.forEach(function(flag, idx){
-//   var testName = 'stdoutShortFlag' + idx;
-//   nodeunit[testName] = function(test){
-//     test.expect(1);
+config.stdoutShortFlags.forEach(function(flag, idx){
+  var testName = 'stdoutShortFlag' + idx;
+  nodeunit[testName] = function(test){
+    test.expect(1);
 
-//     var filepath = tmpPath(testName);
+    var filepath = tmpPath(testName);
 
-//     var notExists = !grunt.file.exists(filepath);
-//     test.ok(notExists, 'should not produce a custom build on the filesystem');
+    var notExists = !grunt.file.exists(filepath);
+    test.ok(notExists, 'should not produce a custom build on the filesystem');
 
-//     test.done();
-//   };
-// });
+    test.done();
+  };
+});
 
 config.debugFlags.forEach(function(flag, idx){
   var testName = 'debugFlag' + idx;
