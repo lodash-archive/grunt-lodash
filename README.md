@@ -2,14 +2,6 @@
 
 Simple grunt wrapper around the Lo-Dash builder.
 
-[Lo-Dash](http://lodash.com/) was created & is maintained by
-[John-David Dalton](http://allyoucanleet.com/), [Kit Cambridge](http://kitcambridge.github.com/) & [Mathias Bynens](http://mathiasbynens.be/)
-
-This project is not associated with the people behind Lo-Dash (or Lo-Dash itself) in any way.
-
-lodash only works with Lo-Dash version >= 0.7.0!
-
-[![Build Status](https://secure.travis-ci.org/lodash/grunt-lodash.png?branch=master)](http://travis-ci.org/lodash/grunt-lodash)
 
 ## Getting Started
 Install this grunt plugin next to your project's [Gruntfile][getting_started] with: `npm install grunt-lodash`
@@ -84,6 +76,10 @@ lodash: {
   }
 }
 ```
+
+## Support
+
+grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7 (Node bug [#5622](https://github.com/joyent/node/issues/5622) prevents 0.10.8-0.10.10 from working)
 
 ## Contributing
 If you like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md)
