@@ -10,6 +10,20 @@
   },
   "contributors": [
     {
+      "name": "John-David Dalton",
+      "email": "john.david.dalton@gmail.com",
+      "url": "http://allyoucanleet.com/"
+    },
+    {
+      "name": "Mathias Bynens",
+      "email": "mathias@qiwi.be",
+      "url": "http://mathiasbynens.be/"
+    },
+    {
+      "name": "Kit Cambridge",
+      "url": "http://kitcambridge.github.com"
+    },
+    {
       "name": "asciidisco",
       "email": "public@asciidisco.com"
     }
@@ -29,16 +43,17 @@
   ],
   "main": "Gruntfile.js",
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.8.19"
   },
   "scripts": {
     "test": "grunt travis --verbose"
   },
-  "dependencies": {
-    "lodash": "~1.3.1"
+  "peerDependencies": {
+    "lodash": ">=1.2.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
+    "lodash": "1.3.1",
+    "grunt": "0.4.1",
     "grunt-contrib-watch": "~0.4.3",
     "grunt-contrib-jshint": "~0.4.3",
     "grunt-contrib-nodeunit": "~0.1.2",
