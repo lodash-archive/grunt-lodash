@@ -1,12 +1,19 @@
 {
   "name": "grunt-lodash",
   "description": "Build your Lo-Dash experience with grunt",
-  "version": "0.1.7",
+  "version": "0.2.0",
   "homepage": "https://github.com/lodash/grunt-lodash",
   "author": {
-    "name": "asciidisco",
-    "email": "public@asciidisco.com"
+    "name": "Blaine Bublitz",
+    "email": "blaine@iceddev.com",
+    "url": "http://iceddev.com"
   },
+  "contributors": [
+    {
+      "name": "asciidisco",
+      "email": "public@asciidisco.com"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/lodash/grunt-lodash.git"

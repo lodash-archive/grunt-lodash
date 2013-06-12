@@ -1,3 +1,12 @@
+v0.2.0:
+  date: 2013-06-12
+  breaking changes:
+    - New configuration syntax (using grunt standard style)
+    - Removed ability to specify custom version of Lo-Dash (will be reintroduced in future)
+  non-breaking changes:
+    - Full rewrite using `grunt.util.spawn` to use Lo-Dash's build process directly
+    - Full test suite
+
 v0.1.4:
   date: 2012-12-13
   changes:
