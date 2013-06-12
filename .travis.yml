@@ -3,13 +3,11 @@ node_js:
   - "0.8"
   - "0.10"
 env:
-  global:
-    - LODASH
   matrix:
-    - "lodash@1.2.0"
-    - "lodash@1.2.1"
-    - "lodash@1.3.0"
-    - "lodash@1.3.1"
-before_script:
+    - LODASH="npm install lodash@1.2.0"
+    - LODASH="npm install lodash@1.2.1"
+    - LODASH="npm install lodash@1.3.0"
+    - LODASH="npm install lodash@1.3.1"
+before_install:
   - "npm install -g grunt-cli"
-  - "npm install $LODASH"
+  - $LODASH
