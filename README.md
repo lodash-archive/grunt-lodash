@@ -1,7 +1,6 @@
 # grunt-lodash <sup>v0.2.0</sup>
 
-Simple grunt wrapper around the Lo-Dash builder.
-
+Grunt wrapper around the Lo-Dash build tool.
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`

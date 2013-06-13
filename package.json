@@ -1,6 +1,6 @@
 {
   "name": "grunt-lodash",
-  "description": "Build your Lo-Dash experience with grunt",
+  "description": "Grunt wrapper around the Lo-Dash build tool",
   "version": "0.2.0",
   "homepage": "https://github.com/lodash/grunt-lodash",
   "author": {
