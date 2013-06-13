@@ -1,11 +1,3 @@
-/*
- * grunt-lodash
- * https://github.com/lodash/grunt-lodash
- *
- * Copyright (c) 2012 asciidisco
- * Licensed under the MIT license.
- */
-
 module.exports = function (grunt) {
   'use strict';
 
