@@ -62,6 +62,7 @@ module.exports = function (grunt) {
     var output = ['--output', this.files[0].dest];
     var spawnArgs = command.concat(args).concat(flags).concat(shortFlags).concat(output);
 
+    grunt.verbose.writeln('Lo-Dash Version: ' + _.VERSION);
     grunt.verbose.writeln('Build Arguments: ' + spawnArgs.join(' '));
 
     grunt.util.spawn({
