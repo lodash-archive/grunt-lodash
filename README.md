@@ -22,14 +22,14 @@ In your project's Gruntfile, add a section named `lodash` to the data object pas
 
 ```javascript
 grunt.initConfig({
-  lodash: {
-    build: {
+  'lodash': {
+    'build': {
       // output location
-      dest: 'build/lodash.build.js',
-      options: {
+      'dest': 'build/lodash.build.js',
+      'options': {
         // modifiers for prepared builds
         // backbone, legacy, modern, mobile, strict, underscore
-        modifier: 'backbone'
+        'modifier': 'backbone'
       }
     }
   }
@@ -46,35 +46,35 @@ lodash backbone -o build/lodash.build.js
 More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
 
 ```javascript
-lodash: {
-  target: {
+'lodash': {
+  'target': {
     // output location
-    dest: 'build/lodash.build.js'
+    'dest': 'build/lodash.build.js'
   },
-  options: {
+  'options': {
     // modifiers for prepared builds
     // backbone, legacy, modern, mobile, strict, underscore
-    modifier: 'backbone',
-    category: ['collections', 'functions'],
-    exports: ['amd', 'commonjs', 'node'],
-    iife: '!function(window,undefined){%output%}(this)',
-    include: ['each', 'filter', 'map'],
-    minus: ['result', 'shuffle'],
-    plus: ['random', 'template'],
-    template: './*.jst',
-    settings: '{interpolate:/\\{\\{([\\s\\S]+?)\\}\\}/g}',
-    moduleId: 'underscore',
+    'modifier': 'backbone',
+    'category': ['collections', 'functions'],
+    'exports': ['amd', 'commonjs', 'node'],
+    'iife': '!function(window,undefined){%output%}(this)',
+    'include': ['each', 'filter', 'map'],
+    'minus': ['result', 'shuffle'],
+    'plus': ['random', 'template'],
+    'template': './*.jst',
+    'settings': '{interpolate:/\\{\\{([\\s\\S]+?)\\}\\}/g}',
+    'moduleId': 'underscore',
     // With or without the --
     // These are the only tested options,
     // as the others don't make sense to use here
-    flags: [
+    'flags': [
       '--stdout',
       'debug',
       '--minify',
       'source-map'
     ],
     // With or without the -
-    shortFlags: [
+    'shortFlags': [
       'c',
       '-d',
       'm',
