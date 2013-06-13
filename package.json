@@ -1,12 +1,21 @@
 {
   "name": "grunt-lodash",
-  "description": "Grunt wrapper around the Lo-Dash build tool",
   "version": "0.2.0",
+  "description": "Grunt wrapper around the Lo-Dash build tool.",
   "homepage": "https://github.com/lodash/grunt-lodash",
+  "license": "MIT",
+  "main": "Gruntfile.js",
+  "keywords": [
+    "gruntplugin",
+    "lodash",
+    "underscore",
+    "custom",
+    "builder"
+  ],
   "author": {
     "name": "Blaine Bublitz",
     "email": "blaine@iceddev.com",
-    "url": "http://iceddev.com"
+    "url": "http://iceddev.com/"
   },
   "contributors": [
     {
@@ -21,27 +30,20 @@
     },
     {
       "name": "Kit Cambridge",
-      "url": "http://kitcambridge.github.com"
+      "url": "http://kitcambridge.github.com/"
     },
     {
       "name": "asciidisco",
       "email": "public@asciidisco.com"
     }
   ],
+  "bugs": {
+    "url": "https://github.com/lodash/grunt-lodash/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/lodash/grunt-lodash.git"
   },
-  "bugs": {
-    "url": "https://github.com/lodash/grunt-lodash/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/lodash/grunt-lodash/blob/master/LICENSE-MIT"
-    }
-  ],
-  "main": "Gruntfile.js",
   "engines": {
     "node": ">=0.8.19"
   },
@@ -58,12 +60,5 @@
     "grunt-contrib-jshint": "~0.4.3",
     "grunt-contrib-nodeunit": "~0.1.2",
     "grunt-contrib-clean": "~0.4.1"
-  },
-  "keywords": [
-    "gruntplugin",
-    "lodash",
-    "underscore",
-    "custom",
-    "builder"
-  ]
+  }
 }
