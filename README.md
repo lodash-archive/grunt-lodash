@@ -1,4 +1,4 @@
-# grunt-lodash
+# grunt-lodash <sup>v0.2.0</sup>
 
 Simple grunt wrapper around the Lo-Dash builder.
 
