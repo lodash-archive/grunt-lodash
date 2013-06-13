@@ -89,11 +89,19 @@ lodash: {
 
 grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7 (Node bug [#5622](https://github.com/joyent/node/issues/5622) prevents 0.10.8-0.10.10 from working)
 
+## Release Notes
+
+### <sup>v0.2.0</sup>
+
+* Configuration syntax uses "grunt-style"
+* Ability to specify custom version of Lo-Dash through peerDependency
+* Use `grunt.util.spawn` to use Lo-Dash's build process directly
+* Full test suite
+
+The full changelog is available [here](https://github.com/lodash/grunt-lodash/wiki/Changelog).
+
 ## Contributing
 If you like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md)
-
-## Release History
-Take a look at the [Changelog](https://github.com/lodash/grunt-lodash/blob/master/CHANGELOG.md)
 
 ## Resources
 + [grunt](https://github.com/gruntjs/grunt)
