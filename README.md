@@ -4,32 +4,37 @@ Simple grunt wrapper around the Lo-Dash builder.
 
 
 ## Getting Started
-Install this grunt plugin next to your project's [Gruntfile][getting_started] with: `npm install grunt-lodash`
+This plugin requires Grunt `~0.4.1`
 
-Then add this line to your project's `Gruntfile.js`.
+If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
 
-```javascript
+```shell
+npm install grunt-lodash --save-dev
+```
+
+One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
 grunt.loadNpmTasks('grunt-lodash');
 ```
 
-## Documentation
-Load the grunt-lodash task as described in 'Getting started' and add your Lo-Dash builder
-configuration to your grunt file:
-
-Example Lo-Dash optimizer grunt file config entry:
+### Overview
+In your project's Gruntfile, add a section named `lodash` to the data object passed into `grunt.initConfig()`.
 
 ```javascript
-lodash: {
-  build: {
-    // output location
-    dest: 'build/lodash.build.js',
-    options: {
-      // modifiers for prepared builds
-      // backbone, legacy, modern, mobile, strict, underscore
-      modifier: 'backbone'
+grunt.initConfig({
+  lodash: {
+    build: {
+      // output location
+      dest: 'build/lodash.build.js',
+      options: {
+        // modifiers for prepared builds
+        // backbone, legacy, modern, mobile, strict, underscore
+        modifier: 'backbone'
+      }
     }
   }
-}
+});
 ```
 As you might have guessed, this would produce the same output as
 
