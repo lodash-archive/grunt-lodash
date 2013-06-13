@@ -1,14 +1,11 @@
 var _ = require('lodash');
 
 /** List of all Lo-Dash methods */
-var lodashMethods = _.functions(_).filter(function(methodName) {
+var allMethods = _.functions(_).filter(function(methodName) {
   return !/^_/.test(methodName);
 });
 
-/** List of all methods */
-var allMethods = lodashMethods.concat('findWhere');
-
-// Project configuration.
+/** Project configuration */
 var config = module.exports = {
 
   modifiers: [
