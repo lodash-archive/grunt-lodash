@@ -8,7 +8,7 @@ var allMethods = _.functions(_).filter(function(methodName) {
 /** Project configuration */
 var config = module.exports = {
 
-  modifiers: [
+  'modifiers': [
     'csp',
     'underscore',
     'modern',
@@ -18,11 +18,11 @@ var config = module.exports = {
     'strict'
   ],
 
-  badModifiers: [
+  'badModifiers': [
     'blunderscore'
   ],
 
-  categories: [
+  'categories': [
     'arrays',
     'chaining',
     'collections',
@@ -31,7 +31,7 @@ var config = module.exports = {
     'utilities'
   ],
 
-  exports: [
+  'exports': [
     'amd',
     'commonjs',
     'global',
@@ -39,273 +39,273 @@ var config = module.exports = {
     'none'
   ],
 
-  iifes: [
+  'iifes': [
     '!function(window,undefined){%output%}(this)'
   ],
 
-  templates: [
+  'templates': [
     './test/fixtures/template/*.jst',
     './test/fixtures/template/*.tpl'
   ],
 
-  allMethods: allMethods,
+  'allMethods': allMethods,
 
-  settings: [
+  'settings': [
     '{interpolate:/\{\{([\s\S]+?)\}\}/g}'
   ],
 
-  moduleIds: [
+  'moduleIds': [
     'underscore'
   ],
 
-  stdoutFlags: [
+  'stdoutFlags': [
     '--stdout',
     'stdout'
   ],
 
-  stdoutShortFlags: [
+  'stdoutShortFlags': [
     '-c',
     'c'
   ],
 
-  debugFlags: [
+  'debugFlags': [
     '--debug',
     'debug'
   ],
 
-  debugShortFlags: [
+  'debugShortFlags': [
     '-d',
     'd'
   ],
 
-  minifyFlags: [
+  'minifyFlags': [
     '--minify',
     'minify'
   ],
 
-  minifyShortFlags: [
+  'minifyShortFlags': [
     '-m',
     'm'
   ],
 
-  sourceMapFlags: [
+  'sourceMapFlags': [
     '--source-map',
     'source-map'
   ],
 
-  sourceMapShortFlags: [
+  'sourceMapShortFlags': [
     '-p',
     'p'
   ],
 
-  clean: {
-    test: ['tmp/']
+  'clean': {
+    'test': ['tmp/']
   },
 
-  nodeunit: {
-    test: ['test/**/*_test.js']
+  'nodeunit': {
+    'test': ['test/**/*_test.js']
   },
 
-  watch: {
-    scripts: {
-      files: '<%= jshint.files %>',
-      tasks: 'default',
-      options: {
-        interrupt: true
+  'watch': {
+    'scripts': {
+      'files': '<%= jshint.files %>',
+      'tasks': 'default',
+      'options': {
+        'interrupt': true
       }
     }
   },
 
-  lodash: {},
+  'lodash': {},
 
-  jshint: {
-    options: {
-      jshintrc: '.jshintrc'
+  'jshint': {
+    'options': {
+      'jshintrc': '.jshintrc'
     },
-    files: ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
+    'files': ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
   }
 };
 
-config.modifiers.concat(config.badModifiers).forEach(function(modifier){
+config.modifiers.concat(config.badModifiers).forEach(function(modifier) {
   config.lodash[modifier] = {
-    dest: 'tmp/' + modifier + '/lodash.js',
-    options: {
-      modifier: modifier,
-      shortFlags: ['d']
+    'dest': 'tmp/' + modifier + '/lodash.js',
+    'options': {
+      'modifier': modifier,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.categories.forEach(function(category){
+config.categories.forEach(function(category) {
   config.lodash[category] = {
-    dest: 'tmp/' + category + '/lodash.js',
-    options: {
-      category: category,
-      shortFlags: ['d']
+    'dest': 'tmp/' + category + '/lodash.js',
+    'options': {
+      'category': category,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.exports.forEach(function(exp){
+config.exports.forEach(function(exp) {
   config.lodash[exp] = {
-    dest: 'tmp/' + exp + '/lodash.js',
-    options: {
-      exports: exp,
-      shortFlags: ['d']
+    'dest': 'tmp/' + exp + '/lodash.js',
+    'options': {
+      'exports': exp,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.iifes.forEach(function(iife, idx){
+config.iifes.forEach(function(iife, idx) {
   var testName = 'iife' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      iife: iife,
-      shortFlags: ['d']
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'iife': iife,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.templates.forEach(function(template, idx){
+config.templates.forEach(function(template, idx) {
   var testName = 'template' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/templates.js',
-    options: {
-      template: template,
-      shortFlags: ['d']
+    'dest': 'tmp/' + testName + '/templates.js',
+    'options': {
+      'template': template,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.allMethods.forEach(function(method, idx){
+config.allMethods.forEach(function(method, idx) {
   var include = 'include_' + idx;
   config.lodash[include] = {
-    dest: 'tmp/' + include + '/lodash.js',
-    options: {
-      include: method,
-      shortFlags: ['d']
+    'dest': 'tmp/' + include + '/lodash.js',
+    'options': {
+      'include': method,
+      'shortFlags': ['d']
     }
   };
 
   var plus = 'plus_' + idx;
   config.lodash[plus] = {
-    dest: 'tmp/' + plus + '/lodash.js',
-    options: {
-      plus: method,
-      shortFlags: ['d']
+    'dest': 'tmp/' + plus + '/lodash.js',
+    'options': {
+      'plus': method,
+      'shortFlags': ['d']
     }
   };
 
   var minus = 'minus_' + idx;
   config.lodash[minus] = {
-    dest: 'tmp/' + minus + '/lodash.js',
-    options: {
-      minus: method,
-      shortFlags: ['d']
+    'dest': 'tmp/' + minus + '/lodash.js',
+    'options': {
+      'minus': method,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.settings.forEach(function(setting, idx){
+config.settings.forEach(function(setting, idx) {
   var testName = 'settings' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      settings: setting,
-      shortFlags: ['d']
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'settings': setting,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.moduleIds.forEach(function(moduleId, idx){
+config.moduleIds.forEach(function(moduleId, idx) {
   var testName = 'moduleId' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      moduleId: moduleId,
-      shortFlags: ['d']
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'moduleId': moduleId,
+      'shortFlags': ['d']
     }
   };
 });
 
-config.stdoutFlags.forEach(function(flag, idx){
+config.stdoutFlags.forEach(function(flag, idx) {
   var testName = 'stdoutFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      flags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'flags': [flag]
     }
   };
 });
 
-config.stdoutShortFlags.forEach(function(flag, idx){
+config.stdoutShortFlags.forEach(function(flag, idx) {
   var testName = 'stdoutShortFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      shortFlags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'shortFlags': [flag]
     }
   };
 });
 
-config.debugFlags.forEach(function(flag, idx){
+config.debugFlags.forEach(function(flag, idx) {
   var testName = 'debugFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      flags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'flags': [flag]
     }
   };
 });
 
-config.debugShortFlags.forEach(function(flag, idx){
+config.debugShortFlags.forEach(function(flag, idx) {
   var testName = 'debugShortFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      shortFlags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'shortFlags': [flag]
     }
   };
 });
 
-config.minifyFlags.forEach(function(flag, idx){
+config.minifyFlags.forEach(function(flag, idx) {
   var testName = 'minifyFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      flags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'flags': [flag]
     }
   };
 });
 
-config.minifyShortFlags.forEach(function(flag, idx){
+config.minifyShortFlags.forEach(function(flag, idx) {
   var testName = 'minifyShortFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      shortFlags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'shortFlags': [flag]
     }
   };
 });
 
 
-config.sourceMapFlags.forEach(function(flag, idx){
+config.sourceMapFlags.forEach(function(flag, idx) {
   var testName = 'sourceMapFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      flags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'flags': [flag]
     }
   };
 });
 
-config.sourceMapShortFlags.forEach(function(flag, idx){
+config.sourceMapShortFlags.forEach(function(flag, idx) {
   var testName = 'sourceMapShortFlag' + idx;
   config.lodash[testName] = {
-    dest: 'tmp/' + testName + '/lodash.js',
-    options: {
-      shortFlags: [flag]
+    'dest': 'tmp/' + testName + '/lodash.js',
+    'options': {
+      'shortFlags': [flag]
     }
   };
 });

@@ -8,14 +8,14 @@ var _ = require('lodash');
 
 var config = require('../config');
 
-function tmpPath(subdir){
+function tmpPath(subdir) {
   return path.join('tmp', subdir, 'lodash.js');
 }
 
 var nodeunit = exports.nodeunit = {};
 
-config.modifiers.forEach(function(modifier){
-  nodeunit[modifier] = function(test){
+config.modifiers.forEach(function(modifier) {
+  nodeunit[modifier] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(modifier);
@@ -31,8 +31,8 @@ config.modifiers.forEach(function(modifier){
   };
 });
 
-config.badModifiers.forEach(function(modifier){
-  nodeunit[modifier] = function(test){
+config.badModifiers.forEach(function(modifier) {
+  nodeunit[modifier] = function(test) {
     test.expect(1);
 
     var filepath = tmpPath(modifier);
@@ -44,8 +44,8 @@ config.badModifiers.forEach(function(modifier){
   };
 });
 
-config.categories.forEach(function(category){
-  nodeunit[category] = function(test){
+config.categories.forEach(function(category) {
+  nodeunit[category] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(category);
@@ -61,8 +61,8 @@ config.categories.forEach(function(category){
   };
 });
 
-config.exports.forEach(function(exp){
-  nodeunit[exp] = function(test){
+config.exports.forEach(function(exp) {
+  nodeunit[exp] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(exp);
@@ -78,9 +78,9 @@ config.exports.forEach(function(exp){
   };
 });
 
-config.iifes.forEach(function(iife, idx){
+config.iifes.forEach(function(iife, idx) {
   var testName = 'iife' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(testName);
@@ -96,9 +96,9 @@ config.iifes.forEach(function(iife, idx){
   };
 });
 
-config.templates.forEach(function(template, idx){
+config.templates.forEach(function(template, idx) {
   var testName = 'template' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     // var filepath = tmpPath(testName);
@@ -116,9 +116,9 @@ config.templates.forEach(function(template, idx){
   };
 });
 
-config.allMethods.forEach(function(method, idx){
+config.allMethods.forEach(function(method, idx) {
   var include = 'include_' + idx;
-  nodeunit[include] = function(test){
+  nodeunit[include] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(include);
@@ -134,7 +134,7 @@ config.allMethods.forEach(function(method, idx){
   };
 
   var plus = 'plus_' + idx;
-  nodeunit[plus] = function(test){
+  nodeunit[plus] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(plus);
@@ -150,7 +150,7 @@ config.allMethods.forEach(function(method, idx){
   };
 
   var minus = 'minus_' + idx;
-  nodeunit[minus] = function(test){
+  nodeunit[minus] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(minus);
@@ -166,9 +166,9 @@ config.allMethods.forEach(function(method, idx){
   };
 });
 
-config.settings.forEach(function(setting, idx){
+config.settings.forEach(function(setting, idx) {
   var testName = 'settings' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(testName);
@@ -184,9 +184,9 @@ config.settings.forEach(function(setting, idx){
   };
 });
 
-config.moduleIds.forEach(function(moduleId, idx){
+config.moduleIds.forEach(function(moduleId, idx) {
   var testName = 'moduleId' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(testName);
@@ -202,9 +202,9 @@ config.moduleIds.forEach(function(moduleId, idx){
   };
 });
 
-config.stdoutFlags.forEach(function(flag, idx){
+config.stdoutFlags.forEach(function(flag, idx) {
   var testName = 'stdoutFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(1);
 
     var filepath = tmpPath(testName);
@@ -216,9 +216,9 @@ config.stdoutFlags.forEach(function(flag, idx){
   };
 });
 
-config.stdoutShortFlags.forEach(function(flag, idx){
+config.stdoutShortFlags.forEach(function(flag, idx) {
   var testName = 'stdoutShortFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(1);
 
     var filepath = tmpPath(testName);
@@ -230,9 +230,9 @@ config.stdoutShortFlags.forEach(function(flag, idx){
   };
 });
 
-config.debugFlags.forEach(function(flag, idx){
+config.debugFlags.forEach(function(flag, idx) {
   var testName = 'debugFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(testName);
@@ -248,9 +248,9 @@ config.debugFlags.forEach(function(flag, idx){
   };
 });
 
-config.debugShortFlags.forEach(function(flag, idx){
+config.debugShortFlags.forEach(function(flag, idx) {
   var testName = 'debugShortFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(testName);
@@ -266,9 +266,9 @@ config.debugShortFlags.forEach(function(flag, idx){
   };
 });
 
-config.minifyFlags.forEach(function(flag, idx){
+config.minifyFlags.forEach(function(flag, idx) {
   var testName = 'minifyFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(testName);
@@ -284,9 +284,9 @@ config.minifyFlags.forEach(function(flag, idx){
   };
 });
 
-config.minifyShortFlags.forEach(function(flag, idx){
+config.minifyShortFlags.forEach(function(flag, idx) {
   var testName = 'minifyShortFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(2);
 
     var filepath = tmpPath(testName);
@@ -302,9 +302,9 @@ config.minifyShortFlags.forEach(function(flag, idx){
   };
 });
 
-config.sourceMapFlags.forEach(function(flag, idx){
+config.sourceMapFlags.forEach(function(flag, idx) {
   var testName = 'sourceMapFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(3);
 
     var filepath = tmpPath(testName);
@@ -325,9 +325,9 @@ config.sourceMapFlags.forEach(function(flag, idx){
   };
 });
 
-config.sourceMapShortFlags.forEach(function(flag, idx){
+config.sourceMapShortFlags.forEach(function(flag, idx) {
   var testName = 'sourceMapShortFlag' + idx;
-  nodeunit[testName] = function(test){
+  nodeunit[testName] = function(test) {
     test.expect(3);
 
     var filepath = tmpPath(testName);
