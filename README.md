@@ -42,7 +42,10 @@ As you might have guessed, this would produce the same output as
 lodash backbone -o build/lodash.build.js
 ```
 
-## All configuration options - More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
+## All configuration options
+
+More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
+
 ```javascript
 lodash: {
   target: {
