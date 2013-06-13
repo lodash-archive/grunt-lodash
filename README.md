@@ -64,8 +64,8 @@ More information can be found in the [Lo-Dash custom builds section](http://loda
     'template': './*.jst',
     'settings': '{interpolate:/\\{\\{([\\s\\S]+?)\\}\\}/g}',
     'moduleId': 'underscore',
-    // With or without the --
-    // These are the only tested options,
+    // with or without the --
+    // these are the only tested options,
     // as the others don't make sense to use here
     'flags': [
       '--stdout',
@@ -73,7 +73,9 @@ More information can be found in the [Lo-Dash custom builds section](http://loda
       '--minify',
       'source-map'
     ],
-    // With or without the -
+    // with or without the -
+    // these are the only tested options,
+    // as the others don't make sense to use here
     'shortFlags': [
       'c',
       '-d',
