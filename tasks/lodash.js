@@ -1,4 +1,4 @@
-module.exports = function (grunt) {
+module.exports = function(grunt) {
   'use strict';
 
   var pkg = require('lodash/package.json');
@@ -9,45 +9,42 @@ module.exports = function (grunt) {
 
   var customOptions = ['modifier', 'flags', 'shortFlags'];
 
-  var omitCustom = _.partialRight(_.omit, function(value, key){
+  var omitCustom = _.partialRight(_.omit, function(value, key) {
     return _.contains(customOptions, key);
   });
 
-  // ==========================================================================
-  // TASKS
-  // ==========================================================================
-
-  grunt.registerMultiTask('lodash', 'Builds a customized Lo-Dash', function (mode) {
+  /** Register the task with Grunt */
+  grunt.registerMultiTask('lodash', 'Builds a customized Lo-Dash', function() {
     var done = this.async();
     var opts = this.options({
-      modifier: '',
-      flags: [],
-      shortFlags: []
+      'modifier': '',
+      'flags': [],
+      'shortFlags': []
     });
 
-    var args = _.map(omitCustom(opts), function(val, opt){
-      if(Array.isArray(val)){
+    var args = _.map(omitCustom(opts), function(val, opt) {
+      if (_.isArray(val)) {
         val = val.join(',');
       }
       return opt + '=' + val;
     });
 
-    var flags = _.map(opts.flags, function(flag){
-      if(flag.indexOf('--') > -1){
+    var flags = _.map(opts.flags, function(flag) {
+      if (flag.indexOf('--') > -1) {
         return flag;
       }
       return '--' + flag;
     });
 
-    var shortFlags = _.map(opts.shortFlags, function(flag){
-      if(flag.indexOf('-') > -1){
+    var shortFlags = _.map(opts.shortFlags, function(flag) {
+      if (flag.indexOf('-') > -1) {
         return flag;
       }
       return '-' + flag;
     });
 
     var command = [builder];
-    if(opts.modifier){
+    if (opts.modifier) {
       command.push(opts.modifier);
     }
 
@@ -58,10 +55,10 @@ module.exports = function (grunt) {
     grunt.verbose.writeln('Build Arguments: ' + spawnArgs.join(' '));
 
     grunt.util.spawn({
-      cmd: 'node',
-      args: spawnArgs
-    }, function(err, data){
-      if(err){
+      'cmd': 'node',
+      'args': spawnArgs
+    }, function(err, data) {
+      if (err) {
         grunt.log.error(err.toString());
         done(err);
       }
