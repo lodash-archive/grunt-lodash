@@ -43,7 +43,7 @@ lodash backbone -o build/lodash.build.js
 
 ## All configuration options
 
-More information can be found in the [Lo-Dash custom builds section](http://lodash.com/#custom-builds)
+More information can be found in the [Lo-Dash custom builds section](http://lodash.com/custom-builds)
 
 ```javascript
 'lodash': {
