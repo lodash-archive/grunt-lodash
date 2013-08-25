@@ -5,20 +5,20 @@ Grunt wrapper around the Lo-Dash build tool.
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
 
 ```shell
 npm install grunt-lodash --save-dev
 ```
 
-One the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
 grunt.loadNpmTasks('grunt-lodash');
 ```
 
 ### Overview
-In your project's Gruntfile, add a section named `lodash` to the data object passed into `grunt.initConfig()`.
+In your project’s Gruntfile, add a section named `lodash` to the data object passed into `grunt.initConfig()`.
 
 ```javascript
 grunt.initConfig({
@@ -94,15 +94,15 @@ grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7 (Node bug [#5622]
 
 ### <sup>v0.2.0</sup>
 
-* Configuration syntax uses "grunt-style"
+* Configuration syntax uses “grunt-style”
 * Ability to specify custom version of Lo-Dash through peerDependency
-* Use `grunt.util.spawn` to use Lo-Dash's build process directly
+* Use `grunt.util.spawn` to use Lo-Dash’s build process directly
 * Full test suite
 
 The full changelog is available [here](https://github.com/lodash/grunt-lodash/wiki/Changelog).
 
 ## Contributing
-If you like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md)
+If you’d like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md)
 
 ## Resources
 + [grunt](https://github.com/gruntjs/grunt)
