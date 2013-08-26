@@ -289,7 +289,6 @@ config.minifyShortFlags.forEach(function(flag, idx) {
   };
 });
 
-
 config.sourceMapFlags.forEach(function(flag, idx) {
   var testName = 'sourceMapFlag' + idx;
   config.lodash[testName] = {
