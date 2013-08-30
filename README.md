@@ -111,7 +111,7 @@ If you’d like to file an issue or submit a pull request, please check the [con
 
 ## Author
 
-| [![twitter/blainebublitz](http://secure.gravatar.com/avatar/ac1c67fd906c9fecd823ce302283b4c1?s=70)](http://twitter.com/blainebublitz "Follow @BlaineBublitz on Twitter") |
+| [![twitter/blainebublitz](http://gravatar.com/avatar/ac1c67fd906c9fecd823ce302283b4c1?s=70)](http://twitter.com/blainebublitz "Follow @BlaineBublitz on Twitter") |
 |---|
 | [Blaine Bublitz](http://iceddev.com/) |
 
