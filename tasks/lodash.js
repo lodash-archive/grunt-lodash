@@ -1,9 +1,9 @@
 module.exports = function(grunt) {
   'use strict';
 
-  var pkg = require('lodash/package.json');
+  var pkg = require('lodash-cli/package.json');
   var bin = pkg.bin.lodash;
-  var builder = require.resolve('lodash/' + bin);
+  var builder = require.resolve('lodash-cli/' + bin);
 
   var _ = require('lodash');
 
