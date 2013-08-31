@@ -1,6 +1,6 @@
 {
   "name": "grunt-lodash",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Grunt wrapper around the Lo-Dash build tool.",
   "homepage": "https://github.com/lodash/grunt-lodash",
   "license": "MIT",
