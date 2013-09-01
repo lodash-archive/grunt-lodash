@@ -1,6 +1,0 @@
-tmp/
-test/
-.*
-*.md
-config.js
-Gruntfile.js

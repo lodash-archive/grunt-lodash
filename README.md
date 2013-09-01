@@ -1,13 +1,13 @@
-# grunt-lodash <sup>v0.2.0</sup>
+# grunt-lodash v0.2.0
 
-Grunt wrapper around the Lo-Dash build tool.
+A Grunt wrapper around [lodash-cli](https://npmjs.org/package/lodash-cli).
 
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
 
-If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
+This plugin requires Grunt `~0.4.1`.
+If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [“Getting Started”](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
 
-```shell
+```bash
 npm install grunt-lodash --save-dev
 ```
 
@@ -18,9 +18,10 @@ grunt.loadNpmTasks('grunt-lodash');
 ```
 
 ### Overview
-In your project’s Gruntfile, add a section named `lodash` to the data object passed into `grunt.initConfig()`.
 
-```javascript
+In your project’s Gruntfile, add a section named `lodash` to the data object passed into `grunt.initConfig()`:
+
+```js
 grunt.initConfig({
   'lodash': {
     'build': {
@@ -35,17 +36,18 @@ grunt.initConfig({
   }
 });
 ```
-As you might have guessed, this would produce the same output as
 
-```shell
+As you might have guessed, this would produce the same output as:
+
+```bash
 lodash backbone -o build/lodash.build.js
 ```
 
-## All configuration options
+## Configuration options
 
-More information can be found in the [Lo-Dash custom builds section](http://lodash.com/custom-builds)
+For a more in-depth explanation of the build options head on over to the [lodash-cli documentation](http://lodash.com/custom-builds).
 
-```javascript
+```js
 'lodash': {
   'target': {
     // output location
@@ -102,19 +104,20 @@ grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7 (Node bug [#5622]
 The full changelog is available [here](https://github.com/lodash/grunt-lodash/wiki/Changelog).
 
 ## Contributing
+
 If you’d like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md)
 
 ## Resources
-+ [grunt](https://github.com/gruntjs/grunt)
-+ [Getting started](http://gruntjs.com/getting-started)
-+ [Lo-Dash](http://lodash.com/)
+
+- [grunt](https://github.com/gruntjs/grunt)
+- [Getting started](http://gruntjs.com/getting-started)
+- [Lo-Dash](http://lodash.com/)
 
 ## Author
 
 | [![twitter/blainebublitz](http://gravatar.com/avatar/ac1c67fd906c9fecd823ce302283b4c1?s=70)](http://twitter.com/blainebublitz "Follow @BlaineBublitz on Twitter") |
 |---|
 | [Blaine Bublitz](http://iceddev.com/) |
-
 
 ## Contributors
 

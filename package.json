@@ -1,7 +1,7 @@
 {
   "name": "grunt-lodash",
   "version": "0.2.1",
-  "description": "Grunt wrapper around the Lo-Dash build tool.",
+  "description": "A Grunt wrapper around lodash-cli.",
   "homepage": "https://github.com/lodash/grunt-lodash",
   "license": "MIT",
   "main": "Gruntfile.js",
@@ -64,5 +64,9 @@
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-clean": "~0.4.1"
-  }
+  },
+  "files": [
+    "LICENSE.txt",
+    "tasks/lodash.js"
+  ]
 }
