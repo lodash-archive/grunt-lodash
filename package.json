@@ -19,9 +19,7 @@
     "Kit Cambridge <github@kitcambridge.be> (http://kitcambridge.be/)",
     "Sebastian Golasch <public@asciidisco.com> (http://asciidisco.com/)"
   ],
-  "bugs": {
-    "url": "https://github.com/lodash/grunt-lodash/issues"
-  },
+  "bugs": "https://github.com/lodash/grunt-lodash/issues",
   "repository": {
     "type": "git",
     "url": "git://github.com/lodash/grunt-lodash.git"
