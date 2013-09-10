@@ -4,7 +4,6 @@
   "description": "A Grunt wrapper around lodash-cli.",
   "homepage": "https://github.com/lodash/grunt-lodash",
   "license": "MIT",
-  "main": "Gruntfile.js",
   "keywords": [
     "gruntplugin",
     "lodash",
