@@ -91,7 +91,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7 and 0.10.12 (Node bug [#5622](https://github.com/joyent/node/issues/5622) prevents 0.10.8-0.10.10 from working)
+grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7, 0.10.12, 0.10.16 (Node bug [#5622](https://github.com/joyent/node/issues/5622) prevents 0.10.8-0.10.10 from working).
 
 ## Release Notes
 
@@ -104,7 +104,7 @@ The full changelog is available [here](https://github.com/lodash/grunt-lodash/wi
 
 ## Contributing
 
-If you’d like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md)
+If you’d like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md).
 
 ## Resources
 
