@@ -7,7 +7,7 @@ module.exports = function(grunt) {
 
   var _ = require('lodash');
 
-  var customOptions = ['modifier', 'flags', 'shortFlags'];
+  var customOptions = ['modifier', 'modularize', 'flags', 'shortFlags'];
 
   var omitCustom = _.partialRight(_.omit, function(value, key) {
     return _.contains(customOptions, key);
@@ -44,6 +44,10 @@ module.exports = function(grunt) {
     });
 
     var command = [builder];
+    if (opts.modularize) {
+      command.push('modularize');
+    }
+
     if (opts.modifier) {
       command.push(opts.modifier);
     }
@@ -51,7 +55,7 @@ module.exports = function(grunt) {
     var output = ['--output', this.files[0].dest];
     var spawnArgs = command.concat(args, flags, shortFlags, output);
 
-    grunt.verbose.writeln('Lo-Dash Version: ' + _.VERSION);
+    grunt.verbose.writeln('Lo-Dash CLI Version: ' + pkg.version);
     grunt.verbose.writeln('Build Arguments: ' + spawnArgs.join(' '));
 
     grunt.util.spawn({
