@@ -1,4 +1,7 @@
 var _ = require('lodash');
+var semver = require('semver');
+
+var pkg = require('lodash-cli/package.json');
 
 /** List of all Lo-Dash methods */
 var allMethods = _.functions(_).filter(function(methodName) {
@@ -37,6 +40,11 @@ var config = module.exports = {
     'global',
     'node',
     'none'
+  ],
+
+  'modularize': [
+    'amd',
+    'node'
   ],
 
   'iifes': [
@@ -156,6 +164,38 @@ config.exports.forEach(function(exp) {
   };
 });
 
+if (semver.gte(pkg.version, '2.0.0')) {
+  // modularize was introduced in 2.0.0
+  config.modularize.forEach(function(exp) {
+    var testName = 'modularize_' + exp;
+    config.lodash[testName] = {
+      'dest': 'tmp/' + testName,
+      'options': {
+        'modularize': true,
+        'exports': exp,
+        'shortFlags': ['d']
+      }
+    };
+  });
+
+  config.lodash['modularize_npm'] = {
+    'dest': 'tmp/modularize_npm',
+    'options': {
+      'modularize': true,
+      'exports': 'npm',
+      'shortFlags': ['d']
+    }
+  };
+
+  config.lodash['modularize_amd_default'] = {
+    'dest': 'tmp/modularize_amd_default',
+    'options': {
+      'modularize': true,
+      'shortFlags': ['d']
+    }
+  };
+}
+
 config.iifes.forEach(function(iife, idx) {
   var testName = 'iife' + idx;
   config.lodash[testName] = {
@@ -178,8 +218,8 @@ config.templates.forEach(function(template, idx) {
   };
 });
 
-config.allMethods.forEach(function(method, idx) {
-  var include = 'include_' + idx;
+config.allMethods.forEach(function(method) {
+  var include = 'include_' + method;
   config.lodash[include] = {
     'dest': 'tmp/' + include + '/lodash.js',
     'options': {
@@ -188,7 +228,7 @@ config.allMethods.forEach(function(method, idx) {
     }
   };
 
-  var plus = 'plus_' + idx;
+  var plus = 'plus_' + method;
   config.lodash[plus] = {
     'dest': 'tmp/' + plus + '/lodash.js',
     'options': {
@@ -197,7 +237,7 @@ config.allMethods.forEach(function(method, idx) {
     }
   };
 
-  var minus = 'minus_' + idx;
+  var minus = 'minus_' + method;
   config.lodash[minus] = {
     'dest': 'tmp/' + minus + '/lodash.js',
     'options': {
@@ -218,8 +258,8 @@ config.settings.forEach(function(setting, idx) {
   };
 });
 
-config.moduleIds.forEach(function(moduleId, idx) {
-  var testName = 'moduleId' + idx;
+config.moduleIds.forEach(function(moduleId) {
+  var testName = 'moduleId_' + moduleId;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {

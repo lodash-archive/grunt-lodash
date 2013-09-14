@@ -5,6 +5,7 @@ var grunt = require('grunt');
 var path = require('path');
 
 var _ = require('lodash');
+var pkg = require('lodash-cli/package.json');
 
 var config = require('../config');
 
@@ -116,8 +117,8 @@ config.templates.forEach(function(template, idx) {
   };
 });
 
-config.allMethods.forEach(function(method, idx) {
-  var include = 'include_' + idx;
+config.allMethods.forEach(function(method) {
+  var include = 'include_' + method;
   nodeunit[include] = function(test) {
     test.expect(2);
 
@@ -133,7 +134,7 @@ config.allMethods.forEach(function(method, idx) {
     test.done();
   };
 
-  var plus = 'plus_' + idx;
+  var plus = 'plus_' + method;
   nodeunit[plus] = function(test) {
     test.expect(2);
 
@@ -149,7 +150,7 @@ config.allMethods.forEach(function(method, idx) {
     test.done();
   };
 
-  var minus = 'minus_' + idx;
+  var minus = 'minus_' + method;
   nodeunit[minus] = function(test) {
     test.expect(2);
 
@@ -184,8 +185,8 @@ config.settings.forEach(function(setting, idx) {
   };
 });
 
-config.moduleIds.forEach(function(moduleId, idx) {
-  var testName = 'moduleId' + idx;
+config.moduleIds.forEach(function(moduleId) {
+  var testName = 'moduleId_' + moduleId;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
