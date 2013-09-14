@@ -1,4 +1,4 @@
-# grunt-lodash v0.2.0
+# grunt-lodash v0.3.0
 
 A Grunt wrapper around [lodash-cli](https://npmjs.org/package/lodash-cli).
 
@@ -57,6 +57,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
     // modifiers for prepared builds
     // backbone, legacy, modern, mobile, strict, underscore
     'modifier': 'backbone',
+    'modularize': true,
     'category': ['collections', 'functions'],
     'exports': ['amd', 'commonjs', 'node'],
     'iife': '!function(window,undefined){%output%}(this)',
@@ -90,16 +91,14 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7 (Node bug [#5622](https://github.com/joyent/node/issues/5622) prevents 0.10.8-0.10.10 from working)
+grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7 and 0.10.12 (Node bug [#5622](https://github.com/joyent/node/issues/5622) prevents 0.10.8-0.10.10 from working)
 
 ## Release Notes
 
-### <sup>v0.2.0</sup>
+### <sup>v0.3.0</sup>
 
-* Configuration syntax uses “grunt-style”
-* Ability to specify custom version of Lo-Dash through peerDependency
-* Use `grunt.util.spawn` to use Lo-Dash’s build process directly
-* Full test suite
+* Added modularize option + tests
+* Tested with Lo-Dash 2.0.0 release
 
 The full changelog is available [here](https://github.com/lodash/grunt-lodash/wiki/Changelog).
 
