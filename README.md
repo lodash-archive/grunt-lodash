@@ -11,7 +11,7 @@ If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out 
 npm install grunt-lodash --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once grunt-lodash has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
 grunt.loadNpmTasks('grunt-lodash');
@@ -91,26 +91,10 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7, 0.10.12, 0.10.16 (Node bug [#5622](https://github.com/joyent/node/issues/5622) prevents 0.10.8-0.10.10 from working).
+grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7, 0.10.12, 0.10.16.<br>
+**Note:** Node.js 0.10.8-0.10.11 [have](https://github.com/joyent/node/issues/5622) [bugs](https://github.com/joyent/node/issues/5688) preventing minified builds.
 
-## Release Notes
-
-### <sup>v0.3.0</sup>
-
-* Added modularize option + tests
-* Tested with Lo-Dash 2.0.0 release
-
-The full changelog is available [here](https://github.com/lodash/grunt-lodash/wiki/Changelog).
-
-## Contributing
-
-If you’d like to file an issue or submit a pull request, please check the [contributing guidelines](https://github.com/lodash/grunt-lodash/blob/master/CONTRIBUTING.md).
-
-## Resources
-
-- [grunt](https://github.com/gruntjs/grunt)
-- [Getting started](http://gruntjs.com/getting-started)
-- [Lo-Dash](http://lodash.com/)
+The full changelog for this release is available on our [wiki](https://github.com/lodash/grunt-lodash/wiki/Changelog).
 
 ## Author
 
