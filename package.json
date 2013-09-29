@@ -4,15 +4,7 @@
   "description": "A Grunt wrapper around lodash-cli.",
   "homepage": "https://github.com/lodash/grunt-lodash",
   "license": "MIT",
-  "keywords": [
-    "builder",
-    "compile",
-    "customize",
-    "gruntplugin",
-    "lodash",
-    "underscore",
-    "util"
-  ],
+  "keywords": ["builder", "compile", "customize", "gruntplugin", "lodash", "underscore", "util"],
   "author": "Blaine Bublitz <blaine@iceddev.com> (http://iceddev.com/)",
   "contributors": [
     "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
