@@ -1,17 +1,14 @@
 'use strict';
 
-var grunt = require('grunt');
-
 var path = require('path');
-var semver = require('semver');
 
-var pkg = require('lodash-cli/package.json');
+var grunt = require('grunt'),
+    semver = require('semver');
 
-var config = require('../config');
+var config = require('../config'),
+    pkg = require('lodash-cli/package.json');
 
-function tmpPath(subdir, file) {
-  return path.join('tmp', subdir, file).toLowerCase();
-}
+var nodeunit = exports.nodeunit = {};
 
 var modularizeFiles = [
   'arrays/',
@@ -195,61 +192,67 @@ var npmModularizeFiles = [
   'zipobject'
 ];
 
-var nodeunit = exports.nodeunit = {};
+function tmpPath(subdir, file) {
+  return path.join('tmp', subdir, file).toLowerCase();
+}
 
-if (semver.gte(pkg.version, '2.0.0')) {
-  // modularize was introduced in 2.0.0
-  config.modularize.forEach(function(exp) {
-    var testName = 'modularize_' + exp;
-    nodeunit[testName] = function(test) {
-      test.expect(modularizeFiles.length);
+// modularize was introduced in 2.0.0
+if (semver.lt(pkg.version, '2.0.0')) {
+  process.exit(0);
+}
 
-      modularizeFiles.forEach(function(file) {
-        var filepath = tmpPath(testName, file);
-        var exists = grunt.file.exists(filepath);
-        test.ok(exists, 'should produce ' + filepath);
+/*----------------------------------------------------------------------------*/
 
-        // TODO: check header when lodash adds the CLI options passed
-        // var source = grunt.file.read(filepath);
-
-        // test.ok(source.indexOf('lodash modularize exports="' + exp + '"') > -1, 'should be built with the custom exports');
-      });
-
-      test.done();
-    };
-  });
-
-  nodeunit['modularize_npm'] = function(test) {
-    test.expect(npmModularizeFiles.length);
-
-    npmModularizeFiles.forEach(function(file) {
-      var filepath = tmpPath('modularize_npm', file);
-      var exists = grunt.file.exists(filepath);
-      test.ok(exists, 'should produce ' + filepath);
-
-      // TODO: check header when lodash adds the CLI options passed
-      // var source = grunt.file.read(filepath);
-
-      // test.ok(source.indexOf('lodash modularize exports="' + exp + '"') > -1, 'should be built with the custom exports');
-    });
-
-    test.done();
-  };
-
-  nodeunit['modularize_amd_default'] = function(test) {
+config.modularize.forEach(function(exp) {
+  var testName = 'modularize_' + exp;
+  nodeunit[testName] = function(test) {
     test.expect(modularizeFiles.length);
 
     modularizeFiles.forEach(function(file) {
-      var filepath = tmpPath('modularize_amd_default', file);
-      var exists = grunt.file.exists(filepath);
+      var filepath = tmpPath(testName, file),
+          exists = grunt.file.exists(filepath);
+
       test.ok(exists, 'should produce ' + filepath);
 
       // TODO: check header when lodash adds the CLI options passed
       // var source = grunt.file.read(filepath);
-
       // test.ok(source.indexOf('lodash modularize exports="' + exp + '"') > -1, 'should be built with the custom exports');
     });
 
     test.done();
   };
-}
+});
+
+nodeunit['modularize_npm'] = function(test) {
+  test.expect(npmModularizeFiles.length);
+
+  npmModularizeFiles.forEach(function(file) {
+    var filepath = tmpPath('modularize_npm', file),
+        exists = grunt.file.exists(filepath);
+
+    test.ok(exists, 'should produce ' + filepath);
+
+    // TODO: check header when lodash adds the CLI options passed
+    // var source = grunt.file.read(filepath);
+    // test.ok(source.indexOf('lodash modularize exports="' + exp + '"') > -1, 'should be built with the custom exports');
+  });
+
+  test.done();
+};
+
+nodeunit['modularize_amd_default'] = function(test) {
+  test.expect(modularizeFiles.length);
+
+  modularizeFiles.forEach(function(file) {
+    var filepath = tmpPath('modularize_amd_default', file),
+        exists = grunt.file.exists(filepath);
+
+    test.ok(exists, 'should produce ' + filepath);
+
+    // TODO: check header when lodash adds the CLI options passed
+    // var source = grunt.file.read(filepath);
+    // test.ok(source.indexOf('lodash modularize exports="' + exp + '"') > -1, 'should be built with the custom exports');
+  });
+
+  test.done();
+};

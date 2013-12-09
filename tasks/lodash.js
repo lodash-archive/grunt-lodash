@@ -1,9 +1,9 @@
 module.exports = function(grunt) {
   'use strict';
 
-  var pkg = require('lodash-cli/package.json');
-  var bin = pkg.bin.lodash;
-  var builder = require.resolve('lodash-cli/' + bin);
+  var pkg = require('lodash-cli/package.json'),
+      bin = pkg.bin.lodash,
+      builder = require.resolve('lodash-cli/' + bin);
 
   var _ = require('lodash');
 
@@ -16,6 +16,7 @@ module.exports = function(grunt) {
   /** Register the task with Grunt */
   grunt.registerMultiTask('lodash', 'Builds a customized Lo-Dash', function() {
     var done = this.async();
+
     var opts = this.options({
       'modifier': '',
       'flags': [],
@@ -47,13 +48,11 @@ module.exports = function(grunt) {
     if (opts.modularize) {
       command.push('modularize');
     }
-
     if (opts.modifier) {
       command.push(opts.modifier);
     }
-
-    var output = ['--output', this.files[0].dest];
-    var spawnArgs = command.concat(args, flags, shortFlags, output);
+    var output = ['--output', this.files[0].dest],
+        spawnArgs = command.concat(args, flags, shortFlags, output);
 
     grunt.verbose.writeln('Lo-Dash CLI Version: ' + pkg.version);
     grunt.verbose.writeln('Build Arguments: ' + spawnArgs.join(' '));
