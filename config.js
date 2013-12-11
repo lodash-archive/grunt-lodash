@@ -1,5 +1,5 @@
-var _ = require('lodash');
-var semver = require('semver');
+var _ = require('lodash'),
+    semver = require('semver');
 
 var pkg = require('lodash-cli/package.json');
 
@@ -10,7 +10,44 @@ var allMethods = _.functions(_).filter(function(methodName) {
 
 /** Project configuration */
 var config = module.exports = {
-
+  'allMethods': allMethods,
+  'badModifiers': [
+    'blunderscore'
+  ],
+  'categories': [
+    'arrays',
+    'chaining',
+    'collections',
+    'functions',
+    'objects',
+    'utilities'
+  ],
+  'debugFlags': [
+    '--debug',
+    'debug'
+  ],
+  'debugShortFlags': [
+    '-d',
+    'd'
+  ],
+  'exports': [
+    'amd',
+    'commonjs',
+    'global',
+    'node',
+    'none'
+  ],
+  'iifes': [
+    '!function(window,undefined){%output%}(this)'
+  ],
+  'minifyFlags': [
+    '--minify',
+    'minify'
+  ],
+  'minifyShortFlags': [
+    '-m',
+    'm'
+  ],
   'modifiers': [
     'csp',
     'underscore',
@@ -20,119 +57,100 @@ var config = module.exports = {
     'mobile',
     'strict'
   ],
-
-  'badModifiers': [
-    'blunderscore'
-  ],
-
-  'categories': [
-    'arrays',
-    'chaining',
-    'collections',
-    'functions',
-    'objects',
-    'utilities'
-  ],
-
-  'exports': [
-    'amd',
-    'commonjs',
-    'global',
-    'node',
-    'none'
-  ],
-
   'modularize': [
     'amd',
     'node'
   ],
-
-  'iifes': [
-    '!function(window,undefined){%output%}(this)'
-  ],
-
-  'templates': [
-    './test/fixtures/template/*.jst',
-    './test/fixtures/template/*.tpl'
-  ],
-
-  'allMethods': allMethods,
-
-  'settings': [
-    '{interpolate:/\{\{([\s\S]+?)\}\}/g}'
-  ],
-
   'moduleIds': [
     'underscore'
   ],
-
-  'stdoutFlags': [
-    '--stdout',
-    'stdout'
+  'settings': [
+    '{interpolate:/\{\{([\s\S]+?)\}\}/g}'
   ],
-
-  'stdoutShortFlags': [
-    '-c',
-    'c'
-  ],
-
-  'debugFlags': [
-    '--debug',
-    'debug'
-  ],
-
-  'debugShortFlags': [
-    '-d',
-    'd'
-  ],
-
-  'minifyFlags': [
-    '--minify',
-    'minify'
-  ],
-
-  'minifyShortFlags': [
-    '-m',
-    'm'
-  ],
-
   'sourceMapFlags': [
     '--source-map',
     'source-map'
   ],
-
   'sourceMapShortFlags': [
     '-p',
     'p'
   ],
+  'stdoutFlags': [
+    '--stdout',
+    'stdout'
+  ],
+  'stdoutShortFlags': [
+    '-c',
+    'c'
+  ],
+  'templates': [
+    './test/fixtures/template/*.jst',
+    './test/fixtures/template/*.tpl'
+  ]
+};
 
-  'clean': {
-    'test': ['tmp/']
-  },
+config.lodash = {};
 
-  'nodeunit': {
-    'test': ['test/**/*_test.js']
-  },
+config.clean = {
+  'test': ['tmp/']
+};
 
-  'watch': {
-    'scripts': {
-      'files': '<%= jshint.files %>',
-      'tasks': 'default',
-      'options': {
-        'interrupt': true
-      }
-    }
-  },
-
-  'lodash': {},
-
-  'jshint': {
-    'options': {
-      'jshintrc': '.jshintrc'
-    },
-    'files': ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js']
+config.jshint = {
+  'files': ['Gruntfile.js', 'tasks/**/*.js', 'test/**/*.js'],
+  'options': {
+    'jshintrc': '.jshintrc'
   }
 };
+
+config.nodeunit = {
+  'test': ['test/**/*_test.js']
+};
+
+config.watch = {
+  'scripts': {
+    'files': '<%= jshint.files %>',
+    'tasks': 'default',
+    'options': {
+      'interrupt': true
+    }
+  }
+};
+
+/*----------------------------------------------------------------------------*/
+
+// the `modularize` command was introduced in 2.0.0
+if (semver.gte(pkg.version, '2.0.0')) {
+  config.modularize.forEach(function(exp) {
+    var testName = 'modularize_' + exp;
+    config.lodash[testName] = {
+      'dest': 'tmp/' + testName,
+      'options': {
+        'exports': exp,
+        'modularize': true,
+        'shortFlags': ['d']
+      }
+    };
+  });
+
+  config.lodash['modularize_npm'] = {
+    'dest': 'tmp/modularize_npm',
+    'options': {
+      'exports': 'npm',
+      'modularize': true,
+      'shortFlags': ['d']
+    }
+  };
+
+  config.lodash['modularize_amd_default'] = {
+    'dest': 'tmp/modularize_amd_default',
+    'options': {
+      'modularize': true,
+      'shortFlags': ['d']
+    }
+  };
+}
+
+/*----------------------------------------------------------------------------*/
 
 config.modifiers.concat(config.badModifiers).forEach(function(modifier) {
   config.lodash[modifier] = {
@@ -164,40 +182,8 @@ config.exports.forEach(function(exp) {
   };
 });
 
-if (semver.gte(pkg.version, '2.0.0')) {
-  // modularize was introduced in 2.0.0
-  config.modularize.forEach(function(exp) {
-    var testName = 'modularize_' + exp;
-    config.lodash[testName] = {
-      'dest': 'tmp/' + testName,
-      'options': {
-        'modularize': true,
-        'exports': exp,
-        'shortFlags': ['d']
-      }
-    };
-  });
-
-  config.lodash['modularize_npm'] = {
-    'dest': 'tmp/modularize_npm',
-    'options': {
-      'modularize': true,
-      'exports': 'npm',
-      'shortFlags': ['d']
-    }
-  };
-
-  config.lodash['modularize_amd_default'] = {
-    'dest': 'tmp/modularize_amd_default',
-    'options': {
-      'modularize': true,
-      'shortFlags': ['d']
-    }
-  };
-}
-
-config.iifes.forEach(function(iife, idx) {
-  var testName = 'iife' + idx;
+config.iifes.forEach(function(iife, index) {
+  var testName = 'iife' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -207,8 +193,8 @@ config.iifes.forEach(function(iife, idx) {
   };
 });
 
-config.templates.forEach(function(template, idx) {
-  var testName = 'template' + idx;
+config.templates.forEach(function(template, index) {
+  var testName = 'template' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/templates.js',
     'options': {
@@ -247,8 +233,8 @@ config.allMethods.forEach(function(method) {
   };
 });
 
-config.settings.forEach(function(setting, idx) {
-  var testName = 'settings' + idx;
+config.settings.forEach(function(setting, index) {
+  var testName = 'settings' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -269,8 +255,8 @@ config.moduleIds.forEach(function(moduleId) {
   };
 });
 
-config.stdoutFlags.forEach(function(flag, idx) {
-  var testName = 'stdoutFlag' + idx;
+config.stdoutFlags.forEach(function(flag, index) {
+  var testName = 'stdoutFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -279,8 +265,8 @@ config.stdoutFlags.forEach(function(flag, idx) {
   };
 });
 
-config.stdoutShortFlags.forEach(function(flag, idx) {
-  var testName = 'stdoutShortFlag' + idx;
+config.stdoutShortFlags.forEach(function(flag, index) {
+  var testName = 'stdoutShortFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -289,8 +275,8 @@ config.stdoutShortFlags.forEach(function(flag, idx) {
   };
 });
 
-config.debugFlags.forEach(function(flag, idx) {
-  var testName = 'debugFlag' + idx;
+config.debugFlags.forEach(function(flag, index) {
+  var testName = 'debugFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -299,8 +285,8 @@ config.debugFlags.forEach(function(flag, idx) {
   };
 });
 
-config.debugShortFlags.forEach(function(flag, idx) {
-  var testName = 'debugShortFlag' + idx;
+config.debugShortFlags.forEach(function(flag, index) {
+  var testName = 'debugShortFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -309,8 +295,8 @@ config.debugShortFlags.forEach(function(flag, idx) {
   };
 });
 
-config.minifyFlags.forEach(function(flag, idx) {
-  var testName = 'minifyFlag' + idx;
+config.minifyFlags.forEach(function(flag, index) {
+  var testName = 'minifyFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -319,8 +305,8 @@ config.minifyFlags.forEach(function(flag, idx) {
   };
 });
 
-config.minifyShortFlags.forEach(function(flag, idx) {
-  var testName = 'minifyShortFlag' + idx;
+config.minifyShortFlags.forEach(function(flag, index) {
+  var testName = 'minifyShortFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -329,8 +315,8 @@ config.minifyShortFlags.forEach(function(flag, idx) {
   };
 });
 
-config.sourceMapFlags.forEach(function(flag, idx) {
-  var testName = 'sourceMapFlag' + idx;
+config.sourceMapFlags.forEach(function(flag, index) {
+  var testName = 'sourceMapFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {
@@ -339,8 +325,8 @@ config.sourceMapFlags.forEach(function(flag, idx) {
   };
 });
 
-config.sourceMapShortFlags.forEach(function(flag, idx) {
-  var testName = 'sourceMapShortFlag' + idx;
+config.sourceMapShortFlags.forEach(function(flag, index) {
+  var testName = 'sourceMapShortFlag' + index;
   config.lodash[testName] = {
     'dest': 'tmp/' + testName + '/lodash.js',
     'options': {

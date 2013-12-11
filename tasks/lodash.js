@@ -1,11 +1,11 @@
 module.exports = function(grunt) {
   'use strict';
 
+  var _ = require('lodash');
+
   var pkg = require('lodash-cli/package.json'),
       bin = pkg.bin.lodash,
       builder = require.resolve('lodash-cli/' + bin);
-
-  var _ = require('lodash');
 
   var customOptions = ['modifier', 'modularize', 'flags', 'shortFlags'];
 
@@ -13,57 +13,52 @@ module.exports = function(grunt) {
     return _.contains(customOptions, key);
   });
 
+  /*--------------------------------------------------------------------------*/
+
   /** Register the task with Grunt */
   grunt.registerMultiTask('lodash', 'Builds a customized Lo-Dash', function() {
     var done = this.async();
 
-    var opts = this.options({
+    var options = this.options({
       'modifier': '',
       'flags': [],
       'shortFlags': []
     });
 
-    var args = _.map(omitCustom(opts), function(val, opt) {
-      if (_.isArray(val)) {
-        val = val.join(',');
+    var args = _.map(omitCustom(options), function(value, key) {
+      if (_.isArray(value)) {
+        value = value.join(',');
       }
-      return opt + '=' + val;
+      return key + '=' + value;
     });
 
-    var flags = _.map(opts.flags, function(flag) {
-      if (flag.indexOf('--') > -1) {
-        return flag;
-      }
-      return '--' + flag;
+    var flags = _.map(options.flags, function(flag) {
+      return flag.replace(/^(?:--)?/, '--');
     });
 
-    var shortFlags = _.map(opts.shortFlags, function(flag) {
-      if (flag.indexOf('-') > -1) {
-        return flag;
-      }
-      return '-' + flag;
+    var shortFlags = _.map(options.shortFlags, function(flag) {
+      return flag.replace(/^(?:-)?/, '-');
     });
 
-    var command = [builder];
-    if (opts.modularize) {
-      command.push('modularize');
+    var spawnArgs = [builder];
+    if (options.modularize) {
+      spawnArgs.push('modularize');
     }
-    if (opts.modifier) {
-      command.push(opts.modifier);
+    if (options.modifier) {
+      spawnArgs.push(options.modifier);
     }
-    var output = ['--output', this.files[0].dest],
-        spawnArgs = command.concat(args, flags, shortFlags, output);
+    spawnArgs = spawnArgs.concat(args, flags, shortFlags, '--output', this.files[0].dest);
 
     grunt.verbose.writeln('Lo-Dash CLI Version: ' + pkg.version);
-    grunt.verbose.writeln('Build Arguments: ' + spawnArgs.join(' '));
+    grunt.verbose.writeln('Build Arguments: ' + spawnArgs.slice(1).join(' '));
 
     grunt.util.spawn({
       'cmd': 'node',
       'args': spawnArgs
-    }, function(err, data) {
-      if (err) {
-        grunt.log.error(err.toString());
-        done(err);
+    }, function(error, data) {
+      if (error) {
+        grunt.log.error(error.toString());
+        done(error);
       }
       grunt.verbose.write(data.toString());
       done();

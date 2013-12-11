@@ -20,12 +20,12 @@ config.modifiers.forEach(function(modifier) {
   nodeunit[modifier] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(modifier),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(modifier),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash ' + modifier) > -1, 'should be built with custom modifier');
 
@@ -37,8 +37,8 @@ config.badModifiers.forEach(function(modifier) {
   nodeunit[modifier] = function(test) {
     test.expect(1);
 
-    var filepath = tmpPath(modifier),
-        notExists = !grunt.file.exists(filepath);
+    var filePath = tmpPath(modifier),
+        notExists = !grunt.file.exists(filePath);
 
     test.ok(notExists, 'should not produce a custom build');
 
@@ -50,12 +50,12 @@ config.categories.forEach(function(category) {
   nodeunit[category] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(category),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(category),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash category="' + category +'"') > -1, 'should be built with the custom category');
 
@@ -67,12 +67,12 @@ config.exports.forEach(function(exp) {
   nodeunit[exp] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(exp),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(exp),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash exports="' + exp + '"') > -1, 'should be built with the custom exports');
 
@@ -80,17 +80,17 @@ config.exports.forEach(function(exp) {
   };
 });
 
-config.iifes.forEach(function(iife, idx) {
-  var testName = 'iife' + idx;
+config.iifes.forEach(function(iife, index) {
+  var testName = 'iife' + index;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash iife="' + iife + '"') > -1, 'should be built with the custom iife');
 
@@ -98,17 +98,17 @@ config.iifes.forEach(function(iife, idx) {
   };
 });
 
-config.templates.forEach(function(template, idx) {
-  var testName = 'template' + idx;
+config.templates.forEach(function(template, index) {
+  var testName = 'template' + index;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = 'tmp/' + testName + '/templates.js',
-        exists = grunt.file.exists(filepath);
+    var filePath = 'tmp/' + testName + '/templates.js',
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a built template JS file');
 
-    var templates = require('../' + filepath),
+    var templates = require('../' + filePath),
         keys = Object.keys(_.omit(templates, 'templates'));
 
     test.ok(keys.length > 0, 'should attach template names to the templates object');
@@ -122,12 +122,12 @@ config.allMethods.forEach(function(method) {
   nodeunit[include] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(include),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(include),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash include="' + method + '"') > -1, 'should be built with the method included');
 
@@ -138,12 +138,12 @@ config.allMethods.forEach(function(method) {
   nodeunit[plus] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(plus),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(plus),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash plus="' + method + '"') > -1, 'should be built with the method included');
 
@@ -154,12 +154,12 @@ config.allMethods.forEach(function(method) {
   nodeunit[minus] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(minus),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(minus),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash minus="' + method + '"') > -1, 'should be built with the method included');
 
@@ -167,17 +167,17 @@ config.allMethods.forEach(function(method) {
   };
 });
 
-config.settings.forEach(function(setting, idx) {
-  var testName = 'settings' + idx;
+config.settings.forEach(function(setting, index) {
+  var testName = 'settings' + index;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash settings="' + setting + '"') > -1, 'should be built with the custom settings');
 
@@ -190,12 +190,12 @@ config.moduleIds.forEach(function(moduleId) {
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash moduleId="' + moduleId + '"') > -1, 'should be built with the custom moduleId');
 
@@ -203,13 +203,13 @@ config.moduleIds.forEach(function(moduleId) {
   };
 });
 
-config.stdoutFlags.forEach(function(flag, idx) {
-  var testName = 'stdoutFlag' + idx;
+config.stdoutFlags.forEach(function(flag, index) {
+  var testName = 'stdoutFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(1);
 
-    var filepath = tmpPath(testName),
-        notExists = !grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        notExists = !grunt.file.exists(filePath);
 
     test.ok(notExists, 'should not produce a custom build on the filesystem');
 
@@ -217,13 +217,13 @@ config.stdoutFlags.forEach(function(flag, idx) {
   };
 });
 
-config.stdoutShortFlags.forEach(function(flag, idx) {
-  var testName = 'stdoutShortFlag' + idx;
+config.stdoutShortFlags.forEach(function(flag, index) {
+  var testName = 'stdoutShortFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(1);
 
-    var filepath = tmpPath(testName),
-        notExists = !grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        notExists = !grunt.file.exists(filePath);
 
     test.ok(notExists, 'should not produce a custom build on the filesystem');
 
@@ -231,17 +231,17 @@ config.stdoutShortFlags.forEach(function(flag, idx) {
   };
 });
 
-config.debugFlags.forEach(function(flag, idx) {
-  var testName = 'debugFlag' + idx;
+config.debugFlags.forEach(function(flag, index) {
+  var testName = 'debugFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash --debug') > -1, 'should be built with the debug flag');
 
@@ -249,17 +249,17 @@ config.debugFlags.forEach(function(flag, idx) {
   };
 });
 
-config.debugShortFlags.forEach(function(flag, idx) {
-  var testName = 'debugShortFlag' + idx;
+config.debugShortFlags.forEach(function(flag, index) {
+  var testName = 'debugShortFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash -d') > -1, 'should be built with the debug flag');
 
@@ -267,17 +267,17 @@ config.debugShortFlags.forEach(function(flag, idx) {
   };
 });
 
-config.minifyFlags.forEach(function(flag, idx) {
-  var testName = 'minifyFlag' + idx;
+config.minifyFlags.forEach(function(flag, index) {
+  var testName = 'minifyFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash --minify') > -1, 'should be built with the minify flag');
 
@@ -285,17 +285,17 @@ config.minifyFlags.forEach(function(flag, idx) {
   };
 });
 
-config.minifyShortFlags.forEach(function(flag, idx) {
-  var testName = 'minifyShortFlag' + idx;
+config.minifyShortFlags.forEach(function(flag, index) {
+  var testName = 'minifyShortFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(2);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash -m') > -1, 'should be built with the minify flag');
 
@@ -303,22 +303,22 @@ config.minifyShortFlags.forEach(function(flag, idx) {
   };
 });
 
-config.sourceMapFlags.forEach(function(flag, idx) {
-  var testName = 'sourceMapFlag' + idx;
+config.sourceMapFlags.forEach(function(flag, index) {
+  var testName = 'sourceMapFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(3);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash --source-map') > -1, 'should be built with the source-map flag');
 
-    filepath = filepath.replace('.js', '.min.map');
-    exists = grunt.file.exists(filepath);
+    filePath = filePath.replace(/\.js$/, '.min.map');
+    exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a source-map file');
 
@@ -326,22 +326,22 @@ config.sourceMapFlags.forEach(function(flag, idx) {
   };
 });
 
-config.sourceMapShortFlags.forEach(function(flag, idx) {
-  var testName = 'sourceMapShortFlag' + idx;
+config.sourceMapShortFlags.forEach(function(flag, index) {
+  var testName = 'sourceMapShortFlag' + index;
   nodeunit[testName] = function(test) {
     test.expect(3);
 
-    var filepath = tmpPath(testName),
-        exists = grunt.file.exists(filepath);
+    var filePath = tmpPath(testName),
+        exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a custom build');
 
-    var source = grunt.file.read(filepath);
+    var source = grunt.file.read(filePath);
 
     test.ok(source.indexOf('lodash -p') > -1, 'should be built with the source-map flag');
 
-    filepath = filepath.replace('.js', '.min.map');
-    exists = grunt.file.exists(filepath);
+    filePath = filePath.replace(/\.js$/, '.min.map');
+    exists = grunt.file.exists(filePath);
 
     test.ok(exists, 'should produce a source-map file');
 
