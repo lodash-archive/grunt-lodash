@@ -1,18 +1,19 @@
 {
+  "camelcase": true,
   "curly": true,
-  "eqeqeq": true,
   "immed": true,
+  "indent": 2,
   "latedef": true,
+  "laxbreak": true,
   "newcap": true,
   "noarg": true,
+  "node": true,
+  "noempty": true,
   "sub": true,
   "undef": true,
-  "boss": true,
-  "eqnull": true,
-  "node": true,
   "globals": {
     "exports": true,
-    "require": true,
-    "module": true
+    "module": true,
+    "require": true
   }
 }
