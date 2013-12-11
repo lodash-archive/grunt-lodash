@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('lodash'),
     semver = require('semver');
 
