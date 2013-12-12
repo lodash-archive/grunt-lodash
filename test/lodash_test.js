@@ -117,8 +117,8 @@ config.templates.forEach(function(template, index) {
   };
 });
 
-config.allMethods.forEach(function(method) {
-  var include = 'include_' + method;
+config.methods.forEach(function(methodName) {
+  var include = 'include_' + methodName;
   nodeunit[include] = function(test) {
     test.expect(2);
 
@@ -129,12 +129,12 @@ config.allMethods.forEach(function(method) {
 
     var source = grunt.file.read(filePath);
 
-    test.ok(source.indexOf('lodash include="' + method + '"') > -1, 'should be built with the method included');
+    test.ok(source.indexOf('lodash include="' + methodName + '"') > -1, 'should be built with the method included');
 
     test.done();
   };
 
-  var plus = 'plus_' + method;
+  var plus = 'plus_' + methodName;
   nodeunit[plus] = function(test) {
     test.expect(2);
 
@@ -145,12 +145,12 @@ config.allMethods.forEach(function(method) {
 
     var source = grunt.file.read(filePath);
 
-    test.ok(source.indexOf('lodash plus="' + method + '"') > -1, 'should be built with the method included');
+    test.ok(source.indexOf('lodash plus="' + methodName + '"') > -1, 'should be built with the method included');
 
     test.done();
   };
 
-  var minus = 'minus_' + method;
+  var minus = 'minus_' + methodName;
   nodeunit[minus] = function(test) {
     test.expect(2);
 
@@ -161,7 +161,7 @@ config.allMethods.forEach(function(method) {
 
     var source = grunt.file.read(filePath);
 
-    test.ok(source.indexOf('lodash minus="' + method + '"') > -1, 'should be built with the method included');
+    test.ok(source.indexOf('lodash minus="' + methodName + '"') > -1, 'should be built with the method included');
 
     test.done();
   };

@@ -5,14 +5,8 @@ var _ = require('lodash'),
 
 var pkg = require('lodash-cli/package.json');
 
-/** List of all Lo-Dash methods */
-var allMethods = _.functions(_).filter(function(methodName) {
-  return !/^_/.test(methodName);
-});
-
 /** Project configuration */
 var config = module.exports = {
-  'allMethods': allMethods,
   'badModifiers': [
     'blunderscore'
   ],
@@ -41,6 +35,11 @@ var config = module.exports = {
   ],
   'iifes': [
     '!function(window,undefined){%output%}(this)'
+  ],
+  'methods': [
+    'assign',
+    'each',
+    'value'
   ],
   'minifyFlags': [
     '--minify',
@@ -128,8 +127,7 @@ if (semver.gte(pkg.version, '2.0.0')) {
       'dest': 'tmp/' + testName,
       'options': {
         'exports': exp,
-        'modularize': true,
-        'shortFlags': ['d']
+        'modularize': true
       }
     };
   });
@@ -138,16 +136,14 @@ if (semver.gte(pkg.version, '2.0.0')) {
     'dest': 'tmp/modularize_npm',
     'options': {
       'exports': 'npm',
-      'modularize': true,
-      'shortFlags': ['d']
+      'modularize': true
     }
   };
 
   config.lodash['modularize_amd_default'] = {
     'dest': 'tmp/modularize_amd_default',
     'options': {
-      'modularize': true,
-      'shortFlags': ['d']
+      'modularize': true
     }
   };
 }
@@ -206,30 +202,30 @@ config.templates.forEach(function(template, index) {
   };
 });
 
-config.allMethods.forEach(function(method) {
-  var include = 'include_' + method;
+config.methods.forEach(function(methodName) {
+  var include = 'include_' + methodName;
   config.lodash[include] = {
     'dest': 'tmp/' + include + '/lodash.js',
     'options': {
-      'include': method,
+      'include': methodName,
       'shortFlags': ['d']
     }
   };
 
-  var plus = 'plus_' + method;
+  var plus = 'plus_' + methodName;
   config.lodash[plus] = {
     'dest': 'tmp/' + plus + '/lodash.js',
     'options': {
-      'plus': method,
+      'plus': methodName,
       'shortFlags': ['d']
     }
   };
 
-  var minus = 'minus_' + method;
+  var minus = 'minus_' + methodName;
   config.lodash[minus] = {
     'dest': 'tmp/' + minus + '/lodash.js',
     'options': {
-      'minus': method,
+      'minus': methodName,
       'shortFlags': ['d']
     }
   };
