@@ -43,6 +43,15 @@ As you might have guessed, this would produce the same output as:
 lodash backbone -o build/lodash.build.js
 ```
 
+Finally, include the `lodash` invocation in your desired build task:
+
+```js
+grunt.registerTask('build', [
+  'clean:dist',
+  'lodash'
+]);
+```
+
 ## Configuration options
 
 For a more in-depth explanation of the build options head on over to the [lodash-cli documentation](http://lodash.com/custom-builds).
