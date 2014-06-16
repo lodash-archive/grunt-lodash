@@ -8,7 +8,7 @@ This plugin requires Grunt `~0.4.1`.
 If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [“Getting Started”](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
 
 ```bash
-npm install grunt-lodash --save-dev
+$ npm i --save-dev grunt-lodash
 ```
 
 Once grunt-lodash has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
@@ -40,7 +40,7 @@ grunt.initConfig({
 As you might have guessed, this would produce the same output as:
 
 ```bash
-lodash backbone -o build/lodash.build.js
+$ lodash backbone -o build/lodash.build.js
 ```
 
 Finally, include the `lodash` invocation in your desired build task:
@@ -100,7 +100,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-grunt-lodash has been tested in at least Node.js 0.8.19-0.10.7, 0.10.12, 0.10.16.<br>
+grunt-lodash has been tested in at least Node.js 0.8.26~0.10.26.<br>
 **Note:** Node.js 0.10.8-0.10.11 [have](https://github.com/joyent/node/issues/5622) [bugs](https://github.com/joyent/node/issues/5688) preventing minified builds.
 
 The full changelog for this release is available on our [wiki](https://github.com/lodash/grunt-lodash/wiki/Changelog).
