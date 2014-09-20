@@ -4,7 +4,7 @@
   "description": "A Grunt wrapper around lodash-cli.",
   "homepage": "https://github.com/lodash/grunt-lodash",
   "license": "MIT",
-  "keywords": ["builder", "compile", "customize", "gruntplugin", "lodash", "underscore", "util"],
+  "keywords": "builder, compile, customize, gruntplugin, lodash, underscore, util",
   "author": "Blaine Bublitz <blaine@iceddev.com> (http://www.iceddev.com/)",
   "contributors": [
     "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
@@ -12,16 +12,10 @@
     "Kit Cambridge <github@kitcambridge.be> (http://kitcambridge.be/)",
     "Sebastian Golasch <public@asciidisco.com> (http://asciidisco.com/)"
   ],
-  "bugs": "https://github.com/lodash/grunt-lodash/issues",
-  "repository": { "type": "git", "url": "git://github.com/lodash/grunt-lodash.git" },
+  "repository": "lodash/grunt-lodash",
+  "scripts": { "test": "grunt travis --verbose" },
   "engines": {
     "node": ">=0.8.19"
-  },
-  "scripts": {
-    "test": "grunt travis --verbose"
-  },
-  "peerDependencies": {
-    "lodash-cli": ">=1.3.1"
   },
   "dependencies": {
     "lodash": "2.0.0"
@@ -34,6 +28,9 @@
     "grunt-contrib-nodeunit": "~0.2.0",
     "grunt-contrib-clean": "~0.4.1",
     "semver": "~2.1.0"
+  },
+  "peerDependencies": {
+    "lodash-cli": ">=1.3.1"
   },
   "files": [
     "LICENSE.txt",
