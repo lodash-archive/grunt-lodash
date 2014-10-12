@@ -1,6 +1,6 @@
 # grunt-lodash v0.3.0
 
-A Grunt wrapper around the [Lo-Dash](http://lodash.com/) command-line interface, [lodash-cli](https://npmjs.org/package/lodash-cli).
+A Grunt wrapper around the [Lo-Dash](https://lodash.com/) command-line interface, [lodash-cli](https://npmjs.org/package/lodash-cli).
 
 ## Getting Started
 
@@ -54,7 +54,7 @@ grunt.registerTask('build', [
 
 ## Configuration options
 
-For a more in-depth explanation of the build options head on over to the [lodash-cli documentation](http://lodash.com/custom-builds).
+For a more in-depth explanation of the build options head on over to the [lodash-cli documentation](https://lodash.com/custom-builds).
 
 ```js
 'lodash': {
