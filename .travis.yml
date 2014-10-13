@@ -13,5 +13,6 @@ branches:
   only:
     - master
 before_install:
+  - "npm i -g npm@1.4.28"
   - "npm i -g grunt-cli"
   - "npm i lodash-cli@$LODASH_VERSION"
