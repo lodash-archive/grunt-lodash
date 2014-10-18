@@ -1,18 +1,29 @@
 language: node_js
 node_js:
-  - "0.8"
   - "0.10"
 env:
+  global:
+    - LODASH_VERSION="1.3.2" NPM_VERSION="^2.0.0"
   matrix:
     - LODASH_VERSION="1.3.2"
     - LODASH_VERSION="2.0.0"
     - LODASH_VERSION="2.4.1"
+matrix:
+  include:
+    - node_js: "0.8"
+      env: NPM_VERSION="~1.4.0"
+    - node_js: "0.8"
+      env: LODASH_VERSION="2.0.0" NPM_VERSION="~1.4.0"
+    - node_js: "0.8"
+      env: LODASH_VERSION="2.4.1" NPM_VERSION="~1.4.0"
 git:
   depth: 10
 branches:
   only:
     - master
 before_install:
-  - "npm i -g npm@1.4.28"
+  - "nvm use $TRAVIS_NODE_VERSION"
+  - "npm config set loglevel error"
+  - "npm i -g npm@\"$NPM_VERSION\""
   - "npm i -g grunt-cli"
   - "npm i lodash-cli@$LODASH_VERSION"
