@@ -7,9 +7,11 @@
   "keywords": "builder, compile, customize, gruntplugin, lodash, underscore, util",
   "author": "Blaine Bublitz <blaine@iceddev.com> (http://www.iceddev.com/)",
   "contributors": [
+    "Blaine Bublitz <blaine@iceddev.com> (http://www.iceddev.com/)",
+    "Benjamin Tan <demoneaux@gmail.com> (http://d10.github.io/)",
     "John-David Dalton <john.david.dalton@gmail.com> (http://allyoucanleet.com/)",
-    "Mathias Bynens <mathias@qiwi.be> (https://mathiasbynens.be/)",
     "Kit Cambridge <github@kitcambridge.be> (http://kitcambridge.be/)",
+    "Mathias Bynens <mathias@qiwi.be> (https://mathiasbynens.be/)",
     "Sebastian Golasch <public@asciidisco.com> (http://asciidisco.com/)"
   ],
   "repository": "lodash/grunt-lodash",
