@@ -100,19 +100,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-grunt-lodash has been tested in at least Node.js 0.8.26~0.10.33.<br>
+grunt-lodash has been tested in at least Node.js 0.8.26~0.10.35.<br>
 **Note:** Node.js 0.10.8-0.10.11 [have](https://github.com/joyent/node/issues/5622) [bugs](https://github.com/joyent/node/issues/5688) preventing minified builds.
 
 The full changelog for this release is available on our [wiki](https://github.com/lodash/grunt-lodash/wiki/Changelog).
-
-## Author
-
-| [![twitter/blainebublitz](http://gravatar.com/avatar/ac1c67fd906c9fecd823ce302283b4c1?s=70)](https://twitter.com/blainebublitz "Follow @BlaineBublitz on Twitter") |
-|---|
-| [Blaine Bublitz](http://www.iceddev.com/) |
-
-## Main Contributors
-
-| [![twitter/demoneaux](http://gravatar.com/avatar/029b19dba521584d83398ada3ecf6131?s=70)](https://twitter.com/demoneaux "Follow @demoneaux on Twitter") | [![twitter/jdalton](http://gravatar.com/avatar/299a3d891ff1920b69c364d061007043?s=70)](https://twitter.com/jdalton "Follow @jdalton on Twitter") | [![twitter/kitcambridge](http://gravatar.com/avatar/6662a1d02f351b5ef2f8b4d815804661?s=70)](https://twitter.com/kitcambridge "Follow @kitcambridge on Twitter") | [![twitter/mathias](http://gravatar.com/avatar/24e08a9ea84deb17ae121074d0f17125?s=70)](https://twitter.com/mathias "Follow @mathias on Twitter") |
-|---|---|---|---|
-| [Benjamin Tan](https://d10.github.io/) | [John-David Dalton](http://allyoucanleet.com/) | [Kit Cambridge](http://kitcambridge.be/) | [Mathias Bynens](https://mathiasbynens.be/) |
