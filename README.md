@@ -100,7 +100,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-grunt-lodash has been tested in at least Node.js 0.8.26~0.10.35.<br>
+Tested in Node.js 0.8.28 & 0.10.35.<br>
 **Note:** Node.js 0.10.8-0.10.11 [have](https://github.com/joyent/node/issues/5622) [bugs](https://github.com/joyent/node/issues/5688) preventing minified builds.
 
-The full changelog for this release is available on our [wiki](https://github.com/lodash/grunt-lodash/wiki/Changelog).
+The changelog for this release is available on our [wiki](https://github.com/lodash/grunt-lodash/wiki/Changelog).
