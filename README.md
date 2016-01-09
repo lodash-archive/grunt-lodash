@@ -79,7 +79,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
     'moduleId': 'underscore',
     // with or without the --
     // these are the only tested options,
-    // as the others don't make sense to use here
+    // as the others don’t make sense to use here
     'flags': [
       '--stdout',
       'development',
@@ -88,7 +88,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
     ],
     // with or without the -
     // these are the only tested options,
-    // as the others don't make sense to use here
+    // as the others don’t make sense to use here
     'shortFlags': [
       'c',
       '-d',
@@ -101,7 +101,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-Tested in Node.js 0.8.28 & 0.10.35.<br>
+Tested in Node.js 0.10.x, 0.12.x, 4.x, & 5.x<br>
 **Note:** Node.js 0.10.8-0.10.11 [have](https://github.com/joyent/node/issues/5622) [bugs](https://github.com/joyent/node/issues/5688) preventing minified builds.
 
 The changelog for this release is available on our [wiki](https://github.com/lodash/grunt-lodash/wiki/Changelog).
