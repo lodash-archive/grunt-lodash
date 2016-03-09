@@ -1,10 +1,14 @@
-# grunt-lodash v0.5.0
+# grunt-lodash v0.5.1
 
 A Grunt wrapper around the [lodash](https://lodash.com/) command-line interface, [lodash-cli](https://npmjs.org/package/lodash-cli).
 
+## Discontinued
+
+This plugin has been discontinued. No further development is expected.
+
 ## Getting Started
 
-This plugin requires Grunt `~0.4.1`.
+This plugin requires Grunt `^0.4.1`.
 If you haven’t used [Grunt](http://gruntjs.com/) before, be sure to check out the [“Getting Started”](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you’re familiar with that process, you may install this plugin with this command:
 
 ```bash
@@ -19,7 +23,7 @@ grunt.loadNpmTasks('grunt-lodash');
 
 ### Overview
 
-In your project’s Gruntfile, add a section named `lodash` to the data object passed into `grunt.initConfig()`:
+In your project’s Gruntfile, add `lodash` to the data object passed to `grunt.initConfig`:
 
 ```js
 grunt.initConfig({
@@ -37,13 +41,13 @@ grunt.initConfig({
 });
 ```
 
-As you might have guessed, this would produce the same output as:
+This will produce the same output as:
 
 ```bash
 $ lodash modern -o build/lodash.build.js
 ```
 
-Finally, include the `lodash` invocation in your desired build task:
+Finally, include `lodash` in your desired build task:
 
 ```js
 grunt.registerTask('build', [
@@ -52,9 +56,9 @@ grunt.registerTask('build', [
 ]);
 ```
 
-## Configuration options
+## Configuration
 
-For a more in-depth explanation of the build options head on over to the [lodash-cli documentation](https://lodash.com/custom-builds).
+For more details see the [lodash-cli documentation](https://lodash.com/custom-builds).
 
 ```js
 'lodash': {
@@ -77,7 +81,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
     'template': './*.jst',
     'settings': '{interpolate:/\\{\\{([\\s\\S]+?)\\}\\}/g}',
     'moduleId': 'underscore',
-    // with or without the --
+    // with or without the `--`
     // these are the only tested options,
     // as the others don’t make sense to use here
     'flags': [
@@ -86,7 +90,7 @@ For a more in-depth explanation of the build options head on over to the [lodash
       '--production',
       'source-map'
     ],
-    // with or without the -
+    // with or without the `-`
     // these are the only tested options,
     // as the others don’t make sense to use here
     'shortFlags': [
@@ -101,7 +105,4 @@ For a more in-depth explanation of the build options head on over to the [lodash
 
 ## Support
 
-Tested in Node.js 0.10.x, 0.12.x, 4.x, & 5.x<br>
-**Note:** Node.js 0.10.8-0.10.11 [have](https://github.com/joyent/node/issues/5622) [bugs](https://github.com/joyent/node/issues/5688) preventing minified builds.
-
-The changelog for this release is available on our [wiki](https://github.com/lodash/grunt-lodash/wiki/Changelog).
+Tested in Node.js 0.10, 0.12, 4, & 5.
